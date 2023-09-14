@@ -1,19 +1,32 @@
-
-
 import { BiSearch, BiUser } from "react-icons/bi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { LuShoppingBag } from "react-icons/lu";
-import {RxHamburgerMenu} from 'react-icons/rx'
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import Logo from "../../../assets/images/mainLogo.webp";
 import NavLink from "./component/NavLink";
 import Product from "./component/dropdowns/ProductDropdown";
+import MobileNav from "./component/mobileNav";
+import { useState } from "react";
 
 const Header = () => {
+
+    const [isNavLinkOpen,setIsNavLinkOpen] = useState(false)
+    const [closeButton, setCloseButton] = useState(false)
+    function onClose() {
+        setIsNavLinkOpen(false)
+        setCloseButton((prev)=>!prev)
+    }
+
+    function onClickHandler() {
+        setIsNavLinkOpen((prev)=>!prev)
+         setCloseButton(false)
+    }
     return (
         <div className="header distanced centered">
+            <MobileNav onClose={onClose} isOpen={isNavLinkOpen} closeButton={closeButton}/>
             <div className="header_burger">
-                <RxHamburgerMenu/>
+                <RxHamburgerMenu onClick={onClickHandler} />
             </div>
             <div className="header_logo">
                 <img src={Logo} alt="PageLogo" />
