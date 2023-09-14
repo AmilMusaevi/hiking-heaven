@@ -7,8 +7,24 @@ const Home = () => {
         <>
             <HeaderInfo />
             <section className="main">
-                <Header/>
+                <Header />
+
                 <div className="main_section">
+                    <div className="main_section_entry">
+                        <h2 className="main_section_entry_title">
+                            HIKING PRODUCT OUTLET
+                        </h2>
+
+                        <p className="main_section_description">
+                            Wand crossbow phoenix levicorpus sirius. Easy
+                            raw-steak half-blood petrified veela house lupin it.
+                        </p>
+                    </div>
+                    <div>
+                        <Button />
+                    </div>
+                </div>
+                {/* <div className="main_section">
                     <div className="main_section_entry">
                         <h2 className="main_section_entry_title">
                             HIKING PRODUCT OUTLET
@@ -22,7 +38,7 @@ const Home = () => {
                     <div>
                         <Button />
                     </div>
-                </div>
+                </div> */}
             </section>
         </>
     );

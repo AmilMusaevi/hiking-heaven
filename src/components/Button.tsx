@@ -6,6 +6,7 @@ const Button = () => {
             className="button"
             initial={{
                 y: "10px",
+                color: "black"
             }}
             whileHover={{
                 y: "0",
