@@ -1,0 +1,19 @@
+@use "../abstracts" as *;
+
+.centered{
+    padding:0px 50px;
+
+    @include mq(xl, max) {
+        padding-top: 5px;
+        padding-inline: 10px;
+    }
+}
+.distanced{
+    padding-top: 10px;
+}
+.flex--center{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}

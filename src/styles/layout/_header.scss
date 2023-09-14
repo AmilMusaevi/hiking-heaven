@@ -1,0 +1,158 @@
+@use "../abstracts/mixin" as *;
+
+/* ======  HEADER TOP STARTED ====== */
+.header_top {
+  width: 100%;
+  background-color: var(--clr-info);
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Work Sans", sans-serif;
+
+  @include mq(lg, max) {
+    display: none; 
+  }
+
+  &_left_text {
+    color: var(--clr-text);
+    font-size: 15px;
+  }
+  &_right {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+
+    & > div:not(:last-child) {
+      border-right-width: 2px;
+      border-right-style: solid;
+      border-right-color: var(--clr-text);
+      padding-right: 0.5rem;
+    }
+    & > div {
+      cursor: pointer;
+    }
+    &_icon {
+      color: var(--clr-text);
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    &_text {
+      color: var(--clr-text);
+      font-size: .9rem;
+    }
+  }
+}
+
+/* ======  HEADER TOP FINISHED ====== */
+
+/* ======  HEADER STARTED ====== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 60px;
+  width: 100%;
+  height: 70px;
+  z-index: 99;
+  position: sticky;
+  &_burger{
+    display: none;
+  }
+  &_logo {
+    width: 150px;
+    cursor: pointer;
+    & img {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  &_nav_menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-right: 1rem;
+    position: relative;
+    &_item{
+        width: 100px;
+        font-size: 1rem;
+        font-family:'Work Sans', serif;
+        cursor: pointer;
+        width:max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:24px 0px ;
+        font-weight: 500;
+        position: relative;
+        transition: .5s;
+        &::before{
+         content: "";
+         position: absolute;
+         top: 2.9rem;
+         left: 0;
+         width: 0%;
+         height: 3px;
+         border-radius: 10px;
+        background-color: rgba(245, 245, 245, 0.767);
+         transition: .5s;
+        }
+        &:hover::before{
+          width: 100%;
+          transition: .5s;
+        }
+    }
+  }
+  &_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+     &_item{
+      font-weight:300 ;
+     }
+
+   &_fav ,&_cart{
+    position: relative;
+   }
+    &_quantity{
+      position: absolute;
+      left: 20px;
+      bottom:15px;
+      font-weight: 600;
+      font-size: 14px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  }
+
+
+  @include mq(lg, max) {
+    justify-content: space-between;
+
+    &_burger{
+      display: inline-block;
+      font-size: 1.2rem;
+    }
+    &_logo {
+      font-size: .5rem;
+      align-self: center;
+      justify-self: center;
+    }
+    &_nav {
+      display: none;
+    }
+
+    &_icon {
+      & > .hideMobile {
+        display: none;
+      }
+    }
+  }
+}
+ 

@@ -1,0 +1,54 @@
+.main {
+    max-width: 1349px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(https://emart.wpthemedemos.com/hiking-heaven/wp-content/uploads/sites/20/2023/06/hiking-banner-bg-scaled.webp);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &_section {
+        margin-top: 12rem;
+        max-width: 100%;
+        height: min-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        &_entry {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 2rem;
+            &_title {
+                text-align: center;
+                color: var(--clr-text);
+                font-size: clamp(1rem, 1rem + 5vw, 4.2rem);
+            }
+            &_explain {
+                color: var(--clr-text);
+                width: 420px;
+                text-align: center;
+                margin-bottom: 1rem;
+                font-size: clamp(.6rem, .6rem + 1vw, 1rem);
+            }
+            &_rightSide{
+                position:absolute ;
+                transform: rotate(-90deg);
+                color: white;
+                right: -320px;
+                 font-weight: 400;
+                font-size: clamp(5rem, 5rem + 5vw, 9.5rem) ;
+                text-transform: uppercase;
+                font-family: 'Italiana', serif;;
+            
+            }
+        }
+    }
+}

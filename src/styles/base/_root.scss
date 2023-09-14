@@ -1,0 +1,9 @@
+@use "../abstracts" as a;
+
+:root {
+  @each $mode, $theme in a.$colors {
+    @each $colorName, $value in $theme {
+      --clr-#{$colorName}: #{$value};
+    }
+  }
+}
