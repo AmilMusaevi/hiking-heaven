@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
@@ -10,9 +10,9 @@ type Props = {
     onClose: () => void;
     closeButton: boolean;
 };
-
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
     const open = isOpen ? "open" : "";
+
     return (
         <div className={`mobile_nav ${open}`}>
             <div className="mobile_nav_head">

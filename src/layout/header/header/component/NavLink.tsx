@@ -20,7 +20,7 @@ const NavLink: React.FC<Props> = ({ to, name, DropDownComp }) => {
             onMouseLeave={handleHover}
             className="header_nav_menu_item"
         >
-            {isDropdown ? <span>{name}</span> : <Link to={to!}>{name}</Link>}
+           <Link to={to!}>{name}</Link>
             <AnimatePresence>
                 {isDropdown && hover && <DropDownComp />}
             </AnimatePresence>

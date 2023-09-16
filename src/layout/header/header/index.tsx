@@ -36,12 +36,12 @@ const Header = () => {
                     <NavLink name="Home" to="/" />
                     <NavLink
                         name="Product"
-                        to="product"
+                        to="/product"
                         DropDownComp={Product}
                     />
-                    <NavLink name="Shop" to="shop" />
-                    <NavLink name="Blog" to="blog" />
-                    <NavLink name="Contact" to="contact" />
+                    <NavLink name="Shop" to="/shop" />
+                    <NavLink name="Blog" to="/blog" />
+                    <NavLink name="Contact" to="/contact" />
                 </ul>
             </nav>
             <div className="header_icon">
