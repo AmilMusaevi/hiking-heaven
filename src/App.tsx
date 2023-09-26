@@ -6,6 +6,7 @@ import "./styles/main.scss";
 import Header from "./layout/header/header";
 import Footer from "./layout/footer";
 import HeaderInfo from "./layout/header/header/component/HeaderTop";
+import Coupon from "./components/Coupon";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <Header />
             <AppRouter />
             <Footer />
+            {/* <Coupon/> */}
         </>
     );
 }
