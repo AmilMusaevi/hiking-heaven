@@ -5,18 +5,18 @@ const ProductFilters = () => {
     return (
         <section className="product_filters">
             {data.map((item) => (
-              <Link to='/product'>
-                <div className="product_filters_item" key={item.id}>
-                    <div className="product_filters_item_img">
-                        <img src={item.img} alt={item.title} />
+                <Link to="/product" key={item.id}>
+                    <div className="product_filters_item">
+                        <div className="product_filters_item_img">
+                            <img src={item.img} alt={item.title} />
+                        </div>
+                        <div className="product_filters_item_info">
+                            <h2 className="product_filters_item_info_title">
+                                {item.title}
+                            </h2>
+                        </div>
                     </div>
-                    <div className="product_filters_item_info">
-                        <h2 className="product_filters_item_info_title">
-                            {item.title}
-                        </h2>
-                    </div>
-                </div>
-             </Link>
+                </Link>
             ))}
         </section>
     );

@@ -1,0 +1,48 @@
+@use "../abstracts//mixin" as *;
+
+.offers_section{
+    margin-top: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:5rem;
+    &_card{
+      max-width:320px;
+      min-width: 300px;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.2rem;
+      text-align: center;
+      position: relative;
+       @include mq(lg, max){
+           max-width: 100%;
+       }
+      &_icons{
+      width: 50px;
+      height: 50px;
+      }
+      &_icon{
+        font-size: 3.5rem;
+        color: rgb(48, 48, 48);
+        transition: .5s;
+        cursor: pointer;
+      }
+      &_title{
+        // * minimum .8
+        // * dynamic value  5vw --> ( 320px -> 16px ), (1386px -> ~ 60px)
+        // * maximum 1.4rem --> ~ 20px 
+        font-size:clamp(.8rem,5vw, 1.4rem);
+      }
+      &_description{
+        line-height: 1.5;
+        font-size: 1.2rem;
+        color: var(--clr-secondary);
+        font-size: clamp(.8rem, 1vw, 1rem);
+    }
+    }
+}

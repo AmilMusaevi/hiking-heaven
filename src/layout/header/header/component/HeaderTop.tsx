@@ -2,7 +2,7 @@ import React from "react";
 
 import { LiaQuestionCircle } from "react-icons/lia";
 import { AiOutlineShop } from "react-icons/ai";
-import { TiLocationOutline} from "react-icons/ti";
+import { TiLocationOutline } from "react-icons/ti";
 const HeaderInfo = () => {
     return (
         <div className="header_top centered">

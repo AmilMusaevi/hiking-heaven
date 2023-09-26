@@ -1,12 +1,12 @@
 .button {
   user-select: none;
-  padding: 1rem;
+  height: 50px;
   background-color: var(--clr-primary);
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
-  width: 200px;
+  width: 180px;
   cursor: pointer;
   border: none;
   & span {

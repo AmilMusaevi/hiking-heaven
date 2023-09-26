@@ -1,33 +1,51 @@
-.product_filters{
+@use "../abstracts/mixin" as *;
+.product_filters {
     padding: 4rem 2rem;
     width: 100%;
-    background-color: #F3FAFF;
+    background-color: #f3faff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: .5rem;
-    &_item{
+    gap: 0.5rem;
+    @include mq(lg, max) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+    &_item {
         width: 141px;
-        height:242px;
+        height: 242px;
         padding: 45px 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        &:hover{
+        @include mq(lg, max) {
+        width: 180px;
+        }
+        @include mq(sm, max) {
+            max-width: 120px;
+        }
+        &:hover {
             background-color: white;
             cursor: pointer;
         }
-        &_img{
+        &_img {
             width: 100%;
             padding: 16px;
-            img{
+            img {
                 max-width: 100%;
             }
+            @include mq(lg, max) {
+                max-width: 100%;
+            }
+            @include mq (sm,max){
+                max-width:100%;
+            }
         }
-        &_info_title{
-            font-size: 1rem;
+        &_info_title {
+            font-size: clamp(1rem, 5vw, 0.5rem);
             text-align: center;
         }
     }

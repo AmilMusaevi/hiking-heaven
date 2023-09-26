@@ -33,7 +33,9 @@ const ProductDropdown = () => {
                         <h3>65%</h3>
                         <h3>OFF</h3>
                     </div>
-                    <button className="product_dropDown_saleProduct_button">Shop Now</button>
+                    <button className="product_dropDown_saleProduct_button">
+                        Shop Now
+                    </button>
                 </div>
             </div>
         </Dropdown>

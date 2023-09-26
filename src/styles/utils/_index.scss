@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 .centered{
-    padding:0px 50px;
+    padding:0px 2em;
 
     @include mq(xl, max) {
         padding-top: 5px;

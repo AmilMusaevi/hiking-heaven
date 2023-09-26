@@ -1,0 +1,29 @@
+@use '../abstracts//mixin' as *;
+.best_selling{
+    margin: 5rem 0;
+    width: 100%;
+    height: min-content;
+    &_top{
+        margin-bottom:2rem;
+        text-align: center;
+        &_title{
+            margin-bottom: 1rem;
+            font-size: 2.3rem;
+        }
+    }
+    &_bottom{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+       gap: 1rem;
+       @include mq(sm){
+        justify-content:center;
+       }
+       @include mq(sm,max){
+           gap: .9rem;
+           justify-content: center;
+       }
+    }
+}

@@ -18,7 +18,7 @@ const Dropdown: React.FC<PropsWithChildren> = ({ children }) => {
                 height: 0,
             }}
             transition={{
-                duration:.4
+                duration: 0.4,
             }}
         >
             {children && children}

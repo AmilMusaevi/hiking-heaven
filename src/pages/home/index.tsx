@@ -2,14 +2,16 @@ import Button from "../../components/Button";
 import Header from "../../layout/header/header";
 import HeaderInfo from "../../layout/header/header/component/HeaderTop";
 import DealProducts from "./components/dealProducts/DealProducts";
+import OffersSection from "./components/offersSection/OffersSection";
 import ProductFilters from "./components/productFilters/ProductFilters";
+import DiscountedProduct from "./components/discountedProduct/DiscountedProduct";
+import Coupon from "../../components/Coupon";
+import BestSellingProducts from "./components/bestSellingProducts/BestSellingProducts";
+import NatureSection from "./components/natureSection/NatureSection";
 const Home = () => {
     return (
         <>
-            <HeaderInfo />
             <section className="main">
-                <Header />
-
                 <article className="main_section">
                     <div className="main_section_entry">
                         <h2 className="main_section_entry_title">
@@ -26,8 +28,13 @@ const Home = () => {
                     </div>
                 </article>
             </section>
-            <ProductFilters/>
-            <DealProducts/>
+            <ProductFilters />
+            <DealProducts />
+            <OffersSection />
+            <DiscountedProduct />
+             <Coupon />
+            <BestSellingProducts />
+            <NatureSection /> 
         </>
     );
 };

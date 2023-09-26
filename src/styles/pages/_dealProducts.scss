@@ -1,3 +1,4 @@
+@use '../abstracts/mixin' as *;
 .deal_products{
     margin-top: 6rem;
     width: 100%;
@@ -20,11 +21,29 @@
         height: min-content;
         background-color: hsl(206, 26%, 95%);
         position: relative;
+        @include mq(xl,max){
+            width: 30%;
+        }
+        @include mq(lg,max){
+            width: 80%;
+        }
+        @include mq(md, max){
+            width: 100%;
+        }
         &_img{
             width: 340px;
             display: flex;
             justify-content: center;
             align-items: center;
+            @include mq(xl,max){
+                width: 100%;
+            }   
+            @include mq(md, max){
+                width: 100%;
+            }
+            @include mq(lg,max){
+                width: 80%;
+            }
             & img{
                 max-width: 100%;
             }

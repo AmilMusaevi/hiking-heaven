@@ -6,13 +6,12 @@ const Button = () => {
             className="button"
             initial={{
                 y: "10px",
-                color: "black"
+                color: "black",
             }}
             whileHover={{
                 y: "0",
                 color: "white",
                 background: "black",
-                border: "1px solid white",
             }}
             transition={{
                 duration: 0.3,

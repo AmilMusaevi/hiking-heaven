@@ -1,0 +1,79 @@
+@use '../abstracts//mixin' as *;
+.coupon{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #D1DBE3;
+    padding: 20px;
+    text-align: center;
+    flex-wrap: wrap;
+    @include mq(lg,max){
+        flex-direction: column;
+    }
+    &_leftSide{
+        max-width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &_title{
+            width: 200px;
+            padding: 10px;
+            background-color: #E7973A;
+            font-size: 2rem;
+            color: var(--clr-primary);
+        }
+        &_promo{
+            font-size: 2.5rem;
+            margin-top: 1rem;
+            color: #868482;
+        }
+        &_date{
+            margin-top: 1.5rem;
+            color: var(--clr-secondary);
+            font-weight: 700;
+        }
+        @include mq(lg,max){
+            max-width: 100%;
+        }
+    }
+    &_rightSide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 60%;
+        &_head{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        &_main{
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #868482;
+            margin-bottom: 2rem; 
+        }
+        &_footer{
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.5;
+        }
+        @include mq(lg,max){
+            max-width: 100%;
+        }
+    }
+}
+.vertical_line{
+    border-right: 2px solid grey;
+    height: 150px;
+    margin: 0 30px;
+    @include mq (lg,max){
+        width: 100%;
+        height: 2px;
+        border-top: 2px solid grey;
+        border-right: 0;
+        margin: 30px 0;
+    }
+}

@@ -1,0 +1,68 @@
+@use '../abstracts//mixin' as *;
+.nature_section{
+    width: 100%;
+    margin-top:5rem;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    padding: 80px;
+    background-image: url("https://emart.wpthemedemos.com/hiking-heaven/wp-content/uploads/sites/20/2023/06/enjoy-hiking-bg-scaled.webp");
+    &_leftSide{
+    display: flex;
+    justify-content: center;
+     align-items: center;
+    &_circle{
+        width: 150px;
+        height:150px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 10px solid #C8D6D9;
+        
+        &_sale{
+            color: #F94D3F;
+        font-size: 1.8rem;
+    }
+    &_off{
+        color: var(--clr-secondary);
+        font-size: 1.8rem;
+    }
+}
+@include mq(lg,max){
+    display: none;
+}
+}
+&_rightSide{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 580px;
+        height: min-content;
+        text-align: center;
+        &_title{
+            color: var(--clr-primary);
+            font-size: 2.2rem;
+        }
+        &_info{
+            color: var(--clr-primary);
+            font-size: 1.1rem;
+        }
+        @include mq(lg,max){
+            width: 100%;
+        }
+}
+@include mq(lg,max){
+    height: min-content;
+    // background-position: 0% 0%;
+    padding: 40px 15px 50px;
+}
+}
