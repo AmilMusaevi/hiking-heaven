@@ -2,6 +2,7 @@ import React from "react";
 
 import { cardProducts } from "../../../../data/mainProducts/CardProducts";
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const DealProducts = () => {
     return (
         <section className="deal_products">
@@ -19,12 +20,13 @@ const DealProducts = () => {
                                         {item.title}
                                     </h2>
                                     <p className="deal_products_item_info_discount">
-                                        Min {item.discount} discount
+                                        Min {item.discount}
                                     </p>
                                 </div>
-                                <div className="deal_products_item_button">
+                              <Link to="/shop">  <div className="deal_products_item_button">
                                     <BsArrowRightCircleFill className="deal_products_item_button_item" />
                                 </div>
+                                </Link>
                             </div>
                         ),
                 )}

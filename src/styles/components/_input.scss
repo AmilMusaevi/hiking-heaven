@@ -1,0 +1,21 @@
+.searchInput{
+ width: 100%;
+height:100% ;
+padding:.8rem;
+border: 1px solid black;
+outline: none;
+border-radius: 5px;
+background-color: inherit;
+}
+.searchInput:focus{
+    outline: none;
+    border: 1px solid  rgb(4, 117, 117);
+}
+.searchInput::placeholder{
+    color: rgb(4, 59, 59);
+}
+.searchBarInput{
+    width: 200px;
+    position: absolute;
+}
+

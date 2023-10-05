@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Dropdown from "../dropdown";
 
@@ -10,7 +11,10 @@ const ProductDropdown = () => {
             <div className="product_dropDown">
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
-                        <span>MAN</span>
+                        <span>
+                            <Link to="/product" state={{ gender: "MAN" }} style={{ color: "white" }}>
+                            MAN</Link>
+                        </span>
                     </button>
                     <div className="product_dropDown_item_img">
                         <img src={manProduct} alt="manProduct" />
@@ -19,7 +23,10 @@ const ProductDropdown = () => {
 
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
-                        <span>WOMAN</span>
+                        <span>
+                        <Link to="/product" state={{ gender: "WOMAN" }} style={{ color: "white" }}>
+                            WOMEN</Link>
+                        </span>
                     </button>
                     <div className="product_dropDown_item_img">
                         <img src={womanProduct} alt="womanProduct" />

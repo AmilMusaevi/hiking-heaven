@@ -1,25 +1,38 @@
-import { motion } from "framer-motion";
+import { addPointerEvent, motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Product from "../pages/products";
 
-const Button = () => {
+type Props = {
+    text:string,
+    initialBg:any,
+    secondBg:any,
+    buttonNav:string,
+}
+
+const Button:React.FC<Props> = ({text,initialBg,secondBg,buttonNav}) => {
     return (
+    <Link to={buttonNav}>
         <motion.button
             className="button"
             initial={{
                 y: "10px",
-                color: "black",
+                color: initialBg,
+                backgroundColor: secondBg,
             }}
             whileHover={{
                 y: "0",
-                color: "white",
-                background: "black",
+                color: secondBg,
+                backgroundColor:initialBg,
             }}
             transition={{
                 duration: 0.3,
                 ease: "linear",
             }}
         >
-            <span style={{ color: "inherit" }}>SHOP NOW</span>
+            
+            <span style={{ color: "inherit" }}>{text}</span>
         </motion.button>
+        </Link>
     );
 };
 

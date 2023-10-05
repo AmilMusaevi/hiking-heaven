@@ -1,0 +1,91 @@
+.product{
+    margin: 5rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    &_option{
+        margin-top: 3rem;
+
+        &_nav_title{
+            margin-bottom: 2rem;
+        }
+        &_nav_menu{
+            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            flex-direction: column;
+            border: 1px solid black;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            padding: 10px;
+            cursor: pointer;
+            gap: 1rem;
+            &_item{
+                font-size: 1.3rem;
+                cursor: pointer;
+            &:last-child{
+              color: rgb(122, 6, 6);
+            }
+        }
+    }
+}
+    &_cards{
+        min-width: 80%;
+        margin-top: 3rem;
+        &_info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0px 20px;
+            margin-bottom: 2rem;
+            &_wrapper{
+                position: relative;
+            }
+            &_title{
+                font-size: 1.7rem;
+            }
+            &_sort{
+                font-size: 1.7rem;
+                cursor: pointer;
+                
+          }
+        }
+    }
+    &_card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    & .card{
+        width: 240px;
+        &_img{
+            width: 100%;
+        }
+    }
+    &_option{
+        min-width: 20%;
+    }
+
+}
+.sort_details{
+    position: absolute;
+    cursor: pointer;
+    left: -110px;
+    // top: 10px;
+    border: none;
+    outline: none;
+    appearance: none;
+    font-size: 1rem;
+    background-color:whitesmoke;
+    width: 100px;
+    height: 35px;
+    padding: .5rem;
+    &_option{
+        cursor: pointer;
+    }
+}

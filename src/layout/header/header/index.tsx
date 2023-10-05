@@ -2,17 +2,36 @@ import { BiSearch, BiUser } from "react-icons/bi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { LuShoppingBag } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { Link } from "react-router-dom";
 import Logo from "../../../assets/images/mainLogo.webp";
 import NavLink from "./component/NavLink";
-import Product from "./component/dropdowns/ProductDropdown";
+import Shop from "./component/dropdowns/ProductDropdown";
 import MobileNav from "./component/mobileNav";
 import { useEffect, useState } from "react";
+import Input from "../../../components/SearchInput";
+import { useSelector } from "react-redux";
+import { getCartTotal } from "../../../redux/features/addToCart/cartSlice";
+import { useDispatch } from "react-redux";
+import { getWishlistTotal } from "../../../redux/features/addToWishlist/wishlistSlice";
 
 const Header = () => {
+    const { cart, totalQuantity } = useSelector((state) => state.allCart);
+    const { wishlist, wishlistTotalQuantity } = useSelector(
+        (state) => state.allWishList,
+    );
     const [scrollPos, setScrollPos] = useState(0);
     const [isNavLinkOpen, setIsNavLinkOpen] = useState(false);
     const [closeButton, setCloseButton] = useState(false);
+    const [input, SetInput] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCartTotal());
+    }, [cart]);
+
+    useEffect(() => {
+        dispatch(getWishlistTotal());
+    }, [wishlist]);
 
     const updatedClassName: React.CSSProperties =
         scrollPos > 90
@@ -23,24 +42,25 @@ const Header = () => {
                   backgroundColor: "white",
               }
             : {};
-
     const handleScrollPos = () => setScrollPos(window.scrollY);
     function onClose() {
         setIsNavLinkOpen(false);
         setCloseButton((prev) => !prev);
     }
-
     useEffect(() => {
         window.addEventListener("scroll", handleScrollPos);
 
         return () => {
             window.removeEventListener("scroll", handleScrollPos);
         };
-    });
+    }, []);
 
     function onClickHandler() {
         setIsNavLinkOpen((prev) => !prev);
         setCloseButton(false);
+    }
+    function onClickHandlerInput() {
+        SetInput((prev) => !prev);
     }
     return (
         <div className="header distanced centered" style={updatedClassName}>
@@ -53,35 +73,49 @@ const Header = () => {
                 <RxHamburgerMenu onClick={onClickHandler} />
             </div>
             <div className="header_logo">
-                <img src={Logo} alt="PageLogo" />
+                <Link to="/">
+                    {" "}
+                    <img src={Logo} alt="PageLogo" />
+                </Link>
             </div>
             <nav className="header_nav">
                 <ul className="header_nav_menu">
                     <NavLink name="Home" to="/" />
                     <NavLink
-                        name="Product"
-                        to="/product"
-                        DropDownComp={Product}
+                        name="Shop"
+                        to="/shop"
+                        DropDownComp={Shop}
                     />
-                    <NavLink name="Shop" to="/shop" />
                     <NavLink name="Blog" to="/blog" />
                     <NavLink name="Contact" to="/contact" />
                 </ul>
             </nav>
             <div className="header_icon">
-                <div className="hideMobile">
-                    <BiSearch className="header_icon_item" />
+                <div className="hideMobile searchBar">
+                    {input && <Input />}
+                    <BiSearch
+                        className="header_icon_item"
+                        onClick={onClickHandlerInput}
+                    />
                 </div>
                 <div>
                     <BiUser className="header_icon_item" />
                 </div>
                 <div className="header_icon_fav hideMobile">
-                    <MdOutlineFavoriteBorder className="header_icon_item" />
-                    <span className="header_icon_quantity ">0</span>
+                    <Link to="wishlist">
+                        <MdOutlineFavoriteBorder className="header_icon_item" />
+                    </Link>
+                    <span className="header_icon_quantity ">
+                        {wishlistTotalQuantity}
+                    </span>
                 </div>
                 <div className="header_icon_cart">
-                    <LuShoppingBag className="header_icon_item" />
-                    <span className="header_icon_quantity">0</span>
+                    <Link to="cart">
+                        <LuShoppingBag className="header_icon_item" />
+                    </Link>
+                    <span className="header_icon_quantity">
+                        {totalQuantity}
+                    </span>
                 </div>
             </div>
         </div>

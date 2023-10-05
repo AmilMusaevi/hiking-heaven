@@ -17,7 +17,12 @@ const NatureSection = () => {
                     Wand crossbow phoenix levicorpus sirius. Easy raw-steak
                     half-blood petrified veela house lupin it.
                 </p>
-                <Button />
+                <Button
+                    buttonNav="/shop"
+                    initialBg={"black"}
+                    secondBg={"white"}
+                    text="SHOP NOW"
+                />
             </div>
         </section>
     );

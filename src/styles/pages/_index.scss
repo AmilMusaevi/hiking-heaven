@@ -1,7 +1,10 @@
-@forward './home';
-@forward './productFilters';
-@forward './dealProducts';
-@forward './offersSection';
-@forward './discountedProducts';
-@forward './bestSellingProducts';
-@forward './natureSection';
+@forward './homePage/home';
+@forward './homePage/productFilters';
+@forward './homePage/dealProducts';
+@forward './homePage/offersSection';
+@forward './homePage/discountedProducts';
+@forward './homePage/bestSellingProducts';
+@forward './homePage/natureSection';
+@forward './shopPage/products';
+@forward './cartPage/cart';
+@forward "./wishlistPage/wishlist"

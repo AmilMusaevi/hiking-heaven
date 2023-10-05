@@ -24,7 +24,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <Button />
+                        <Button buttonNav="/shop" text="SHOP NOW" initialBg={"black"} secondBg={"white"}/>
                     </div>
                 </article>
             </section>
@@ -32,9 +32,9 @@ const Home = () => {
             <DealProducts />
             <OffersSection />
             <DiscountedProduct />
-             <Coupon />
+            <Coupon />
             <BestSellingProducts />
-            <NatureSection /> 
+            <NatureSection />
         </>
     );
 };

@@ -1,6 +1,4 @@
-import { cardProducts } from "../../../../data/mainProducts/CardProducts";
-
-import Card from "../../../../components/Card";
+import Slider from "../../../../components/Slider";
 const BestSellingProducts = () => {
     return (
         <section className="best_selling centered">
@@ -13,16 +11,10 @@ const BestSellingProducts = () => {
                     food caught.
                 </p>
             </div>
-            <div className="best_selling_bottom">
-                {cardProducts.slice(0, 8).map((item) => (
-                    <Card
-                        key={item.id}
-                        img={item.img}
-                        title={item.title}
-                        price={item.price}
-                    />
-                ))}
-            </div>
+             <div className="best_selling_bottom">
+             <Slider/>
+            </div> 
+
         </section>
     );
 };

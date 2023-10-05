@@ -40,7 +40,7 @@ const Footer = () => {
                         <input
                             type="tel"
                             className="footer_card_contact_bottom_input"
-                            value={"(888) 123 4567"}
+                            defaultValue={"(888) 123 4567"}
                         />
                     </div>
                 </div>

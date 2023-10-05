@@ -15,6 +15,7 @@ const DiscountedProduct = () => {
             <div className="discounted_product_cardsSide">
                 {cardProducts.slice(0, 4).map((item) => (
                     <Card
+                        item={item}
                         key={item.id}
                         img={item.img}
                         title={item.title}

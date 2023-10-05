@@ -1,6 +1,6 @@
-@use '../abstracts//mixin' as *;
+@use "../../abstracts/mixin" as *;
+
 .best_selling{
-    margin: 5rem 0;
     width: 100%;
     height: min-content;
     &_top{
@@ -13,10 +13,6 @@
     }
     &_bottom{
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
        gap: 1rem;
        @include mq(sm){
         justify-content:center;

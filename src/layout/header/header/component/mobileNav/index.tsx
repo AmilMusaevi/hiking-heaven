@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -11,10 +11,39 @@ type Props = {
     closeButton: boolean;
 };
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
+    const [state, setState] = useState();
+    const navigate = useNavigate();
     const open = isOpen ? "open" : "";
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    onClose();
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
 
+    function onChangeHandler(e: any) {
+        setState(e.target.value);
+    }
+    function onCatchEnter(e: any) {
+        if (e.which !== 13) return;
+
+        navigate("/shop", {
+            state: {
+                filter: state,
+            },
+        });
+    }
     return (
-        <div className={`mobile_nav ${open}`}>
+        <div ref={wrapperRef} className={`mobile_nav ${open}`}>
             <div className="mobile_nav_head">
                 <div className="mobile_nav_head_logo">
                     <img src={logo} alt="logo" />
@@ -32,15 +61,17 @@ const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
             </div>
             <div className="mobile_nav_body">
                 <div className="mobile_nav_body_input">
-                    <input type="text" placeholder="Search..." />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        onKeyPress={onCatchEnter}
+                        onChange={onChangeHandler}
+                    />
                     <CiSearch className="mobile_nav_body_input_search" />
                 </div>
                 <ul className="mobile_nav_body_menu">
                     <li className="mobile_nav_body_menu_item">
                         <Link to="/">Home</Link>
-                    </li>
-                    <li className="mobile_nav_body_menu_item">
-                        <Link to="/product">Product</Link>
                     </li>
                     <li className="mobile_nav_body_menu_item">
                         <Link to="/shop">Shop</Link>

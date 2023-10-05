@@ -117,6 +117,7 @@
         cursor: pointer;
         &_item {
             font-weight: 300;
+            z-index: 2;
         }
 
         &_fav,
@@ -260,4 +261,11 @@
             }
         }
     }
+}
+.searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
 }
