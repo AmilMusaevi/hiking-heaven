@@ -136,6 +136,7 @@ const Shop = () => {
 
     return (
         <section className="product centered">
+            
             <div className="product_option">
                 <nav className="product_option_nav">
                     <h2 className="product_option_nav_title">

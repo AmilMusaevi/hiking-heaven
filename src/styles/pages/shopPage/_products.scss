@@ -1,14 +1,21 @@
+@use "../../abstracts//mixin" as *;
 .product{
     margin: 5rem 0rem;
     display: flex;
     justify-content: space-between;
     align-items: start;
-    gap: 1rem;
+    @include mq(lg,max){
+       flex-wrap: wrap;
+    justify-content: center;
+   }
     &_option{
         margin-top: 3rem;
-
+        width: max-content;
         &_nav_title{
             margin-bottom: 2rem;
+            @include mq(lg,max){
+                text-align: center;
+            }
         }
         &_nav_menu{
             text-align: left;
@@ -23,6 +30,12 @@
             padding: 10px;
             cursor: pointer;
             gap: 1rem;
+            @include mq(lg,max){
+                flex-direction: row;
+                border-left: none;
+                border-bottom: 1px solid var(--clr-secondary);
+                flex-wrap: wrap;
+              }
             &_item{
                 font-size: 1.3rem;
                 cursor: pointer;
@@ -41,6 +54,10 @@
             align-items: center;
             margin: 0px 20px;
             margin-bottom: 2rem;
+            @include mq (lg,max){
+                justify-content: space-around;
+                gap: 4rem;
+            }
             &_wrapper{
                 position: relative;
             }
@@ -63,8 +80,19 @@
     }
     & .card{
         width: 240px;
+        @include mq(md,max){
+            width: 160px;
+            height: 280px;  
+            padding: .6rem;
+        }
         &_img{
             width: 100%;
+            @include mq(md,max){
+                height: 150px;
+            }
+        }
+        &_info{
+            height: 80px;
         }
     }
     &_option{

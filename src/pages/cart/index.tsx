@@ -105,7 +105,7 @@ const Cart = () => {
                                         />
                                     </div>
                                     <div>
-                                        <p>$</p>
+                                        <p>99$</p>
                                     </div>
                                 </div>
                             </div>

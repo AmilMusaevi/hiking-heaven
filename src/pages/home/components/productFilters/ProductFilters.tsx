@@ -5,7 +5,7 @@ const ProductFilters = () => {
     return (
         <section className="product_filters">
             {data.map((item) => (
-                <Link to="/product" key={item.id}>
+                <Link to="/shop" key={item.id}>
                     <div className="product_filters_item">
                         <div className="product_filters_item_img">
                             <img src={item.img} alt={item.title} />

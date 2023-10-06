@@ -1,3 +1,4 @@
+@use "../../abstracts//mixin" as *;
 .wishlistPage {
     width: 100%;
     height: max-content;
@@ -9,57 +10,74 @@
         226.69deg,
         #edf6fa8c 38.63%,
         #f9e0b014 82.88%
-        );
-    }
-    .wishlist {
+    );
+}
+.wishlist {
     border-radius: 5px;
-    margin-top: 7rem;
+    margin: 5rem 0rem;
+    width: 100%;
     background-color: white;
     height: min-content;
-    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    @include mq(lg, max) {
+        max-width: 90%;
+    }
+
     &_info {
         display: flex;
         width: 100%;
-        gap: 4rem;
-        padding: 25px;
-        font-size: 1.2rem;
+        gap: 6rem;
+        padding: 20px 30px;
+        font-size: 1.1rem;
         border-bottom: 1px solid rgb(175, 175, 175);
+        &_title {
+            margin-left: 0.7rem;
+        }
     }
     &_item {
         display: flex;
-        padding: 20px;
+        height: min-content;
+        align-items: center;
+        @include mq(md, max) {
+            flex-direction: column;
+            .button {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+        padding: 20px 0px;
         width: 100%;
         align-items: center;
         font-size: 1.2rem;
         gap: 1rem;
         justify-content: space-between;
         border-bottom: 1px solid rgb(175, 175, 175);
+        &:last-child {
+            border-bottom: none;
+        }
         &_remove {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
         }
         &_about {
             display: flex;
-            padding: 10px;
+            padding: 10px 0px;
             width: 100%;
             align-items: center;
-            gap: 0.3rem;
             &_img {
                 width: 102px;
                 height: 80px;
                 margin-right: 5rem;
                 & img {
                     width: 100%;
-                    // object-fit: cover;
                     height: 100%;
                 }
             }
             & p {
-                margin-right: 5rem;
+                margin-right: 4rem;
             }
         }
     }

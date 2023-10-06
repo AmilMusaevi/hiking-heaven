@@ -1,0 +1,12 @@
+.scrollTop_item{
+    position: fixed;
+    right: 1%;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    width: max-content;    cursor: pointer;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color:rgba(67, 62, 146, 0.877);
+}

@@ -124,7 +124,6 @@ export const cardProducts = [
         quantity: 1,
         img: antoraJacket,
         gender: "WOMAN",
-        discount:"discount 60%",
     },
     {
         id: 13,
@@ -168,6 +167,7 @@ export const cardProducts = [
     },
     {
         id: 18,
+        discount:"discount 60%",
         title: "XERODRY GTX JACKET",
         price: 299,
         quantity: 1,

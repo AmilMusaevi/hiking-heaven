@@ -6,13 +6,15 @@ type Props = {
     text:string,
     initialBg:any,
     secondBg:any,
-    buttonNav:string,
+    buttonNav?:any,
+    addToCart?:() => void;
 }
 
-const Button:React.FC<Props> = ({text,initialBg,secondBg,buttonNav}) => {
+const Button:React.FC<Props> = ({text,initialBg,secondBg,buttonNav,addToCart}) => {
     return (
     <Link to={buttonNav}>
         <motion.button
+        onClick={addToCart}
             className="button"
             initial={{
                 y: "10px",

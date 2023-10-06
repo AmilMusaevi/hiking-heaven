@@ -25,6 +25,12 @@ const Header = () => {
     const [input, SetInput] = useState(false);
     const dispatch = useDispatch();
 
+    const scrollUp = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
     useEffect(() => {
         dispatch(getCartTotal());
     }, [cart]);
@@ -72,20 +78,13 @@ const Header = () => {
             <div className="header_burger">
                 <RxHamburgerMenu onClick={onClickHandler} />
             </div>
-            <div className="header_logo">
-                <Link to="/">
-                    {" "}
-                    <img src={Logo} alt="PageLogo" />
-                </Link>
+            <div className="header_logo" onClick={scrollUp}>
+                <img src={Logo} alt="PageLogo" />
             </div>
             <nav className="header_nav">
                 <ul className="header_nav_menu">
                     <NavLink name="Home" to="/" />
-                    <NavLink
-                        name="Shop"
-                        to="/shop"
-                        DropDownComp={Shop}
-                    />
+                    <NavLink name="Shop" to="/shop" DropDownComp={Shop} />
                     <NavLink name="Blog" to="/blog" />
                     <NavLink name="Contact" to="/contact" />
                 </ul>

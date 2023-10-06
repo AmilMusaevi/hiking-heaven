@@ -1,6 +1,4 @@
-import { wishlistSlice } from "./wishlistSlice";
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const initialState = {
     wishlist: [],
@@ -15,15 +13,15 @@ export const wishlistSlice = createSlice({
                 (item) => item.id === action.payload.id,
             );
             if (state.wishlist[findWish]) {
-                state.wishlist[findWish].quantity= 1;
+                state.wishlist[findWish].quantity = 1;
             } else {
                 state.wishlist.push(action.payload);
             }
         },
         getWishlistTotal: (state) => {
-            let {  wishlistTotalQuantity } = state.wishlist.reduce(
+            let { wishlistTotalQuantity } = state.wishlist.reduce(
                 (wishListTotal, wishListItem) => {
-                    const {  quantity } = wishListItem;
+                    const { quantity } = wishListItem;
 
                     wishListTotal.wishlistTotalQuantity += quantity;
                     return wishListTotal;
@@ -34,7 +32,11 @@ export const wishlistSlice = createSlice({
             );
             state.wishlistTotalQuantity = wishlistTotalQuantity;
         },
+        removeWishlistItem: (state,action)=>{
+            state.wishlist=state.wishlist.filter((item)=>item.id!==action.payload)
+        }
     },
 });
-export const { addToWishList, getWishlistTotal } = wishlistSlice.actions;
+export const { addToWishList, getWishlistTotal, removeWishlistItem } =
+    wishlistSlice.actions;
 export default wishlistSlice.reducer;
