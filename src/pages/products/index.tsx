@@ -12,7 +12,7 @@ const Shop = () => {
     const { state } = useLocation();
     const [sort, setSort] = useState(false);
     const [option, setOption] = useState("");
-    console.log(option)
+    console.log(option);
     // * ternary operator is expression ? some stuff : should be other expression ? expression : ...
     // * filter data with filter that should be sended other pages input and others
     // prettier-ignore
@@ -53,25 +53,29 @@ const Shop = () => {
                 break;
             case "Man":
                 setFilteredData(() =>
-                option == "all" 
-                    ? shuffledData.filter((q) => q.gender == "MAN") 
-                    : shuffledData.filter((q) => q.gender == "MAN" &&
-                      q.title
-                          .toLowerCase()
-                          .includes(option.toLowerCase()),
-            ),
-        );
+                    option == "all"
+                        ? shuffledData.filter((q) => q.gender == "MAN")
+                        : shuffledData.filter(
+                              (q) =>
+                                  q.gender == "MAN" &&
+                                  q.title
+                                      .toLowerCase()
+                                      .includes(option.toLowerCase()),
+                          ),
+                );
 
                 break;
             case "Woman":
                 setFilteredData(() =>
-                       option == "all" 
-                            ? shuffledData.filter((q) => q.gender == "WOMAN") 
-                            : shuffledData.filter((q) => q.gender == "WOMAN" &&
-                              q.title
-                                  .toLowerCase()
-                                  .includes(option.toLowerCase()),
-                    ),
+                    option == "all"
+                        ? shuffledData.filter((q) => q.gender == "WOMAN")
+                        : shuffledData.filter(
+                              (q) =>
+                                  q.gender == "WOMAN" &&
+                                  q.title
+                                      .toLowerCase()
+                                      .includes(option.toLowerCase()),
+                          ),
                 );
                 break;
             case "Default":
@@ -136,7 +140,6 @@ const Shop = () => {
 
     return (
         <section className="product centered">
-            
             <div className="product_option">
                 <nav className="product_option_nav">
                     <h2 className="product_option_nav_title">

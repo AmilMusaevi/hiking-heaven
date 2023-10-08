@@ -167,7 +167,7 @@ export const cardProducts = [
     },
     {
         id: 18,
-        discount:"discount 60%",
+        discount: "discount 60%",
         title: "XERODRY GTX JACKET",
         price: 299,
         quantity: 1,
@@ -206,7 +206,6 @@ export const cardProducts = [
         img: motiveJacket,
         gender: "MAN",
     },
-  
 
     {
         id: 23,
@@ -246,7 +245,7 @@ export const cardProducts = [
         price: 179,
         quantity: 1,
         img: trekkingBagSYmbium,
-        discount:"discount 60%",
+        discount: "discount 60%",
         gender: "MAN",
     },
     {
@@ -264,7 +263,7 @@ export const cardProducts = [
         quantity: 1,
         img: breathableShoes,
         gender: "MAN",
-        discount:"discount 60%",
+        discount: "discount 60%",
     },
 
     {
@@ -277,8 +276,7 @@ export const cardProducts = [
     },
 ];
 
-
 export const shuffledData = cardProducts
-.map(value => ({ value, sort: Math.random() }))
-.sort((a, b) => a.sort - b.sort)
-.map(({ value }) => value)
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);

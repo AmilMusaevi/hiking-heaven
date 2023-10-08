@@ -12,8 +12,13 @@ const ProductDropdown = () => {
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
                         <span>
-                            <Link to="/product" state={{ gender: "MAN" }} style={{ color: "white" }}>
-                            MAN</Link>
+                            <Link
+                                to="/product"
+                                state={{ gender: "MAN" }}
+                                style={{ color: "white" }}
+                            >
+                                MAN
+                            </Link>
                         </span>
                     </button>
                     <div className="product_dropDown_item_img">
@@ -24,8 +29,13 @@ const ProductDropdown = () => {
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
                         <span>
-                        <Link to="/product" state={{ gender: "WOMAN" }} style={{ color: "white" }}>
-                            WOMEN</Link>
+                            <Link
+                                to="/product"
+                                state={{ gender: "WOMAN" }}
+                                style={{ color: "white" }}
+                            >
+                                WOMEN
+                            </Link>
                         </span>
                     </button>
                     <div className="product_dropDown_item_img">

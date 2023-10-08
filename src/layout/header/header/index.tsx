@@ -25,22 +25,22 @@ const Header = () => {
     useEffect(() => {
         dispatch(getCartTotal());
     }, [cart]);
-    
+
     useEffect(() => {
         dispatch(getWishlistTotal());
     }, [wishlist]);
-    
+
     // SCROLL
     const [scrollPos, setScrollPos] = useState(0);
     const scrollUp = () => {
         window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        };
+            top: 0,
+            behavior: "smooth",
+        });
+    };
 
     const updatedClassName: React.CSSProperties =
-    scrollPos > 90
+        scrollPos > 90
             ? {
                   top: 0,
                   transition: ".2s",
@@ -56,8 +56,8 @@ const Header = () => {
             window.removeEventListener("scroll", handleScrollPos);
         };
     }, []);
-    // SCROLL 
-    
+    // SCROLL
+
     // wishlist
     const [isNavLinkOpen, setIsNavLinkOpen] = useState(false);
     const [closeButton, setCloseButton] = useState(false);
@@ -72,19 +72,19 @@ const Header = () => {
     function onClickHandlerInput() {
         SetInput((prev) => !prev);
     }
-    
+
     // addtoCart
-    
-    const [isCartOpen,setIsCartOpen] = useState(false)
-    const [closeCartButton,setCloseCartButton] =useState(false)
-    function onCloseCart (){
-        setIsCartOpen(false)
-        setCloseCartButton((prev)=>!prev)
+
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [closeCartButton, setCloseCartButton] = useState(false);
+    function onCloseCart() {
+        setIsCartOpen(false);
+        setCloseCartButton((prev) => !prev);
     }
 
-    function onClickHandlerCart (){
-        setIsCartOpen((prev)=>!prev)
-        setCloseCartButton(false)
+    function onClickHandlerCart() {
+        setIsCartOpen((prev) => !prev);
+        setCloseCartButton(false);
     }
     return (
         <div className="header distanced centered" style={updatedClassName}>
@@ -127,16 +127,19 @@ const Header = () => {
                     </span>
                 </div>
                 <div className="header_icon_cart">
-                        <LuShoppingBag className="header_icon_item" onClick={onClickHandlerCart} />
+                    <LuShoppingBag
+                        className="header_icon_item"
+                        onClick={onClickHandlerCart}
+                    />
                     <span className="header_icon_quantity">
                         {totalQuantity}
                     </span>
                 </div>
             </div>
             <CartModal
-              isCartOpen={isCartOpen}
-              onCloseCart={onCloseCart}
-              closeCartButton={closeCartButton}
+                isCartOpen={isCartOpen}
+                onCloseCart={onCloseCart}
+                closeCartButton={closeCartButton}
             />
         </div>
     );

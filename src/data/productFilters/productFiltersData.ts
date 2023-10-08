@@ -27,7 +27,7 @@ export const data = [
         id: 4,
         img: backPack,
         title: "BACKPACK",
-        filter:"MAN",
+        filter: "MAN",
     },
     {
         id: 5,

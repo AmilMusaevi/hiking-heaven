@@ -1,20 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 type TCart = {
     id: number;
     price: number;
     quantity: number;
     title: string;
-    img: string
-}
+    img: string;
+};
 
 type TInitialState = {
-    cart: TCart[]
-    totalPrice: number
-    totalQuantity: number,
-
-}
+    cart: TCart[];
+    totalPrice: number;
+    totalQuantity: number;
+};
 
 const initialState: TInitialState = {
     cart: [],
@@ -64,19 +62,26 @@ export const cartSlice = createSlice({
         },
         decreaseQuantity: (state, action) => {
             state.cart = state.cart
-            .map((item) => {
-                if (item.id === action.payload) {
-                    return { ...item, quantity: item.quantity - 1 };
-                }
-                return item;
-            })
-            .filter((item)=>item.quantity!==0)
+                .map((item) => {
+                    if (item.id === action.payload) {
+                        return { ...item, quantity: item.quantity - 1 };
+                    }
+                    return item;
+                })
+                .filter((item) => item.quantity !== 0);
         },
-        removeItem:(state,action)=>{
-            state.cart=state.cart.filter((item)=>item.id!==action.payload)
-        }
+        removeItem: (state, action) => {
+            state.cart = state.cart.filter(
+                (item) => item.id !== action.payload,
+            );
+        },
     },
 });
-export const { addToCart, getCartTotal, increaseQuantity, decreaseQuantity,removeItem } =
-    cartSlice.actions;
+export const {
+    addToCart,
+    getCartTotal,
+    increaseQuantity,
+    decreaseQuantity,
+    removeItem,
+} = cartSlice.actions;
 export default cartSlice.reducer;

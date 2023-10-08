@@ -11,7 +11,7 @@ import ScrollToTopPages from "./components/ScrollToTopPages";
 function App() {
     return (
         <>
-        <ScrollToTopPages/>
+            <ScrollToTopPages />
             <HeaderInfo />
             <Header />
             <AppRouter />

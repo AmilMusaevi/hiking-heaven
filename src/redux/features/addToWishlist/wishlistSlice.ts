@@ -5,13 +5,13 @@ type TCart = {
     price: number;
     quantity: number;
     title: string;
-    img: string
-}
+    img: string;
+};
 
 type TInitialState = {
-    wishlist: TCart[]
+    wishlist: TCart[];
     wishlistTotalQuantity: number;
-}
+};
 
 const initialState: TInitialState = {
     wishlist: [],
@@ -45,9 +45,11 @@ export const wishlistSlice = createSlice({
             );
             state.wishlistTotalQuantity = wishlistTotalQuantity;
         },
-        removeWishlistItem: (state,action)=>{
-            state.wishlist=state.wishlist.filter((item)=>item.id!==action.payload)
-        }
+        removeWishlistItem: (state, action) => {
+            state.wishlist = state.wishlist.filter(
+                (item) => item.id !== action.payload,
+            );
+        },
     },
 });
 export const { addToWishList, getWishlistTotal, removeWishlistItem } =

@@ -11,10 +11,9 @@ const BestSellingProducts = () => {
                     food caught.
                 </p>
             </div>
-             <div className="best_selling_bottom">
-             <Slider/>
-            </div> 
-
+            <div className="best_selling_bottom">
+                <Slider />
+            </div>
         </section>
     );
 };

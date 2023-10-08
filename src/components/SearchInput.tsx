@@ -10,7 +10,7 @@ const SearchInput = () => {
     // * On input handler that change state on onChange Listener
     const onChangeHandler = (e: any) => setState(e.target.value);
 
-    // * this expression compare that is key which is pushed not equal Enter 
+    // * this expression compare that is key which is pushed not equal Enter
     // * if is this equal it navigate to product page with state
     function onCatchEnter(e: any) {
         if (e.which !== 13) return;
@@ -31,7 +31,7 @@ const SearchInput = () => {
                 }}
                 animate={{
                     width: "250px",
-                    x:"-55%",
+                    x: "-55%",
                     y: "-2%",
                 }}
                 transition={{

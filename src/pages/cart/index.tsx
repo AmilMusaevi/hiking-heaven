@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { CiCircleRemove } from "react-icons/ci";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import {toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Button from "../../components/Button";
 
 import {
@@ -20,9 +20,9 @@ const Cart = () => {
         (state: any) => state.allCart,
     );
     const dispatch = useDispatch();
-    function removeItem(id:number){
-        return()=>{
-            dispatch(removeItemFromCart(id))
+    function removeItem(id: number) {
+        return () => {
+            dispatch(removeItemFromCart(id));
             toast.error("Item removed", {
                 position: "top-right",
                 autoClose: 4000,
@@ -32,9 +32,8 @@ const Cart = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                })  
-        }
-
+            });
+        };
     }
     useEffect(() => {
         dispatch(getCartTotal());
@@ -62,9 +61,7 @@ const Cart = () => {
                                 <div className="cart_item_info">
                                     <CiCircleRemove
                                         className="cart_item_info_remove"
-                                        onClick={
-                                           removeItem(item.id)   
-                                        }
+                                        onClick={removeItem(item.id)}
                                     />
                                     <div className="cart_item_info_img">
                                         <img src={item.img} alt="" />

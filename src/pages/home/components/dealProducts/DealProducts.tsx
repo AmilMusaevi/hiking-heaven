@@ -23,9 +23,11 @@ const DealProducts = () => {
                                         Min {item.discount}
                                     </p>
                                 </div>
-                              <Link to="/shop">  <div className="deal_products_item_button">
-                                    <BsArrowRightCircleFill className="deal_products_item_button_item" />
-                                </div>
+                                <Link to="/shop">
+                                    {" "}
+                                    <div className="deal_products_item_button">
+                                        <BsArrowRightCircleFill className="deal_products_item_button_item" />
+                                    </div>
                                 </Link>
                             </div>
                         ),

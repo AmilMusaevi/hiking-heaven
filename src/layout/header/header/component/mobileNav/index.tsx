@@ -5,10 +5,8 @@ import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 
-
 import { useAppSelector } from "../../../../../redux/store";
 import logo from "../../../../../assets/images/mainLogo.webp";
-
 
 type Props = {
     isOpen: boolean;
@@ -17,7 +15,7 @@ type Props = {
 };
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
     const [state, setState] = useState();
-    const {wishlistTotalQuantity} =  useAppSelector(
+    const { wishlistTotalQuantity } = useAppSelector(
         (state) => state.allWishList,
     );
 

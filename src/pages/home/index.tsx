@@ -24,7 +24,12 @@ const Home = () => {
                         </p>
                     </div>
                     <div>
-                        <Button buttonNav="/shop" text="SHOP NOW" initialBg={"black"} secondBg={"white"}/>
+                        <Button
+                            buttonNav="/shop"
+                            text="SHOP NOW"
+                            initialBg={"black"}
+                            secondBg={"white"}
+                        />
                     </div>
                 </article>
             </section>

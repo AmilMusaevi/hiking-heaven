@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import {LiaMountainSolid} from "react-icons/lia"
-
+import { LiaMountainSolid } from "react-icons/lia";
 
 const scrollUp = () => {
     window.scrollTo({
@@ -9,26 +8,29 @@ const scrollUp = () => {
     });
 };
 const ScrollTop = () => {
-    const [scrollToUp,setScrollToUp] =useState(false)
-    
-    useEffect(()=>{
-        window.addEventListener("scroll",()=>{
-            if(window.scrollY>100){
-             setScrollToUp(true)
-            }
-            else{
-                setScrollToUp(false)
-            }
-        })
-    },[])
-  return (
-   <>
-     { scrollToUp && <div>
-          <LiaMountainSolid onClick={scrollUp} className="scrollTop_item"/>
-    </div>
-     }
-     </>
-  )
-}
+    const [scrollToUp, setScrollToUp] = useState(false);
 
-export default ScrollTop
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                setScrollToUp(true);
+            } else {
+                setScrollToUp(false);
+            }
+        });
+    }, []);
+    return (
+        <>
+            {scrollToUp && (
+                <div>
+                    <LiaMountainSolid
+                        onClick={scrollUp}
+                        className="scrollTop_item"
+                    />
+                </div>
+            )}
+        </>
+    );
+};
+
+export default ScrollTop;
