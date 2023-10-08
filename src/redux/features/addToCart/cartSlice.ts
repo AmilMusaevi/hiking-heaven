@@ -1,17 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 type TCart = {
-    quantity: number
+    id: number;
+    price: number;
+    quantity: number;
+    title: string;
+    img: string
 }
 
-type State = {
+type TInitialState = {
     cart: TCart[]
     totalPrice: number
     totalQuantity: number,
 
 }
 
-const initialState = {
+const initialState: TInitialState = {
     cart: [],
     totalPrice: 0,
     totalQuantity: 0,

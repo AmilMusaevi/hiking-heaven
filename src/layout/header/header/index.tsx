@@ -13,34 +13,34 @@ import { useSelector } from "react-redux";
 import { getCartTotal } from "../../../redux/features/addToCart/cartSlice";
 import { useDispatch } from "react-redux";
 import { getWishlistTotal } from "../../../redux/features/addToWishlist/wishlistSlice";
-
+import CartModal from "../../../pages/cart/components/cartModal/CartModal";
+import { useAppSelector } from "../../../redux/store";
 const Header = () => {
-    const { cart, totalQuantity } = useSelector((state) => state.allCart);
-    const { wishlist, wishlistTotalQuantity } = useSelector(
+    const { cart, totalQuantity } = useAppSelector((state) => state.allCart);
+    const { wishlist, wishlistTotalQuantity } = useAppSelector(
         (state) => state.allWishList,
     );
-    const [scrollPos, setScrollPos] = useState(0);
-    const [isNavLinkOpen, setIsNavLinkOpen] = useState(false);
-    const [closeButton, setCloseButton] = useState(false);
     const [input, SetInput] = useState(false);
     const dispatch = useDispatch();
-
-    const scrollUp = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
     useEffect(() => {
         dispatch(getCartTotal());
     }, [cart]);
-
+    
     useEffect(() => {
         dispatch(getWishlistTotal());
     }, [wishlist]);
+    
+    // SCROLL
+    const [scrollPos, setScrollPos] = useState(0);
+    const scrollUp = () => {
+        window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        };
 
     const updatedClassName: React.CSSProperties =
-        scrollPos > 90
+    scrollPos > 90
             ? {
                   top: 0,
                   transition: ".2s",
@@ -49,24 +49,42 @@ const Header = () => {
               }
             : {};
     const handleScrollPos = () => setScrollPos(window.scrollY);
-    function onClose() {
-        setIsNavLinkOpen(false);
-        setCloseButton((prev) => !prev);
-    }
+
     useEffect(() => {
         window.addEventListener("scroll", handleScrollPos);
-
         return () => {
             window.removeEventListener("scroll", handleScrollPos);
         };
     }, []);
+    // SCROLL 
+    
+    // wishlist
+    const [isNavLinkOpen, setIsNavLinkOpen] = useState(false);
+    const [closeButton, setCloseButton] = useState(false);
+    function onClose() {
+        setIsNavLinkOpen(false);
+        setCloseButton((prev) => !prev);
+    }
 
     function onClickHandler() {
         setIsNavLinkOpen((prev) => !prev);
-        setCloseButton(false);
     }
     function onClickHandlerInput() {
         SetInput((prev) => !prev);
+    }
+    
+    // addtoCart
+    
+    const [isCartOpen,setIsCartOpen] = useState(false)
+    const [closeCartButton,setCloseCartButton] =useState(false)
+    function onCloseCart (){
+        setIsCartOpen(false)
+        setCloseCartButton((prev)=>!prev)
+    }
+
+    function onClickHandlerCart (){
+        setIsCartOpen((prev)=>!prev)
+        setCloseCartButton(false)
     }
     return (
         <div className="header distanced centered" style={updatedClassName}>
@@ -109,14 +127,17 @@ const Header = () => {
                     </span>
                 </div>
                 <div className="header_icon_cart">
-                    <Link to="cart">
-                        <LuShoppingBag className="header_icon_item" />
-                    </Link>
+                        <LuShoppingBag className="header_icon_item" onClick={onClickHandlerCart} />
                     <span className="header_icon_quantity">
                         {totalQuantity}
                     </span>
                 </div>
             </div>
+            <CartModal
+              isCartOpen={isCartOpen}
+              onCloseCart={onCloseCart}
+              closeCartButton={closeCartButton}
+            />
         </div>
     );
 };

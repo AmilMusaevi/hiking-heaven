@@ -1,11 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
-import { CiSearch } from "react-icons/ci";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { CiSearch } from "react-icons/ci";
+
+
+import { useAppSelector } from "../../../../../redux/store";
 import logo from "../../../../../assets/images/mainLogo.webp";
+
+
 type Props = {
     isOpen: boolean;
     onClose: () => void;
@@ -13,7 +17,7 @@ type Props = {
 };
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
     const [state, setState] = useState();
-    const {wishlistTotalQuantity} =  useSelector(
+    const {wishlistTotalQuantity} =  useAppSelector(
         (state) => state.allWishList,
     );
 
@@ -25,9 +29,9 @@ const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
     };
     const navigate = useNavigate();
     const open = isOpen ? "open" : "";
-    function useOutsideAlerter(ref) {
+    function useOutsideAlerter(ref: any) {
         useEffect(() => {
-            function handleClickOutside(event) {
+            function handleClickOutside(event: any) {
                 if (ref.current && !ref.current.contains(event.target)) {
                     onClose();
                 }
@@ -38,7 +42,7 @@ const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
             };
         }, [ref]);
     }
-    const wrapperRef = useRef(null);
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
     useOutsideAlerter(wrapperRef);
 
     function onChangeHandler(e: any) {

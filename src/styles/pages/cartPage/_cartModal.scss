@@ -1,0 +1,105 @@
+.cart_modal{
+    width: 90%;
+    overflow: auto;
+    max-width: 320px;
+    background-color: var(--clr-primary);
+    height:100vh;
+    position:fixed;
+    right: -400px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.4s;
+    transition-timing-function: ease-in;
+    z-index:3;
+    border-bottom-right-radius: 5px;
+    gap: 5rem;
+   &.openCart{
+        right: 0;
+        transition: 0.4s;
+        transition-timing-function: ease-in;
+    }
+    & .button{
+        width:100%;
+         margin-top: 1rem;
+    }
+    &::-webkit-scrollbar {
+        width: 12px !important;
+        height: 12px !important;
+        }
+    &_head{
+        display: flex;
+        background-color: #DCDCDC;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem;
+        font-size: 1.1rem;
+        &_remove{
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    }
+    &_item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid grey;
+        margin-top: 1.2rem;
+        padding: .5rem;
+        gap: 1rem;
+        &_img{
+            width: 150px;
+            height: 100px;
+            & img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &_info{
+            font-size: .8rem;
+            text-align: center;
+            &_title{
+                margin-bottom: 1rem;
+            }
+            &_quantity{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .2rem;
+                &_icon{
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+            &_input{
+                padding: .2rem;  
+                text-align: center;
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button{
+                    -webkit-appearance: none;
+                }
+            }
+        }
+    }
+    &_details{
+        font-size: 1rem;
+        text-align: center;
+        &_remove{
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        &_price{
+            padding-right: .2rem;
+        }
+    }
+    }
+    &_bottom{
+        margin-bottom: 2rem;
+        &_total{
+            display: flex;
+            justify-content: space-between;
+            padding: 0rem 1rem;
+            align-items: center;
+        }
+    }
+}

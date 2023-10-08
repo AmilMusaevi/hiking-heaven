@@ -49,6 +49,10 @@
         max-width: 580px;
         height: min-content;
         text-align: center;
+        & .button{
+                margin: 0 auto;
+            
+        }
         &_title{
             color: var(--clr-primary);
             font-size: 2.2rem;

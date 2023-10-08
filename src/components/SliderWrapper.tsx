@@ -31,7 +31,7 @@ const SliderWrapper:React.FC<Props> =  ({children}) => {
                 className="mySwiper"
             >
             {
-                !!children.length && children.map((item,index)=>
+                !!children.length && children.map(( item: any,index: number)=>
                 <SwiperSlide key={index}>{item}</SwiperSlide>
                 )
             }

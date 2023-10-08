@@ -24,7 +24,7 @@ const Cart = () => {
         return()=>{
             dispatch(removeItemFromCart(id))
             toast.error("Item removed", {
-                position: "bottom-left",
+                position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
                 closeOnClick: true,

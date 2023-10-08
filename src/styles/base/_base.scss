@@ -22,3 +22,15 @@ a {
 input{
     outline: none;
 }
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track{
+    background-color:rgb(5, 5, 31)
+}
+::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(rgb(84, 84, 134),rgb(85, 85, 138));
+}
+::-webkit-scrollbar-thumb:hover{
+    background-image: linear-gradient(rgb(42, 42, 128),rgb(45, 45, 143))
+}
