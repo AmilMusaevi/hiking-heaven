@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiCircleRemove } from "react-icons/ci";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+import Lottie from "lottie-react";
 
 import Button from "../../components/Button";
-
+import cartEmpty from "../../json/emptyCart.json";
 import {
     removeItem as removeItemFromCart,
     decreaseQuantity,
@@ -27,7 +28,7 @@ const Cart = () => {
         return () => {
             dispatch(removeItemFromCart(id));
             toast.error("Item removed", {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 4000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -63,10 +64,12 @@ const Cart = () => {
                         {carts.map((item: any) => (
                             <div className="cart_item">
                                 <div className="cart_item_info">
-                                    <CiCircleRemove
-                                        className="cart_item_info_remove"
-                                        onClick={removeItem(item.id)}
-                                    />
+                                    <div>
+                                        <CiCircleRemove
+                                            className="cart_item_info_remove"
+                                            onClick={removeItem(item.id)}
+                                        />
+                                    </div>
                                     <div className="cart_item_info_img">
                                         <img src={item.img} alt="" />
                                     </div>
@@ -128,18 +131,20 @@ const Cart = () => {
                             text={"PROCEED TO CHECKOUT"}
                             initialBg={"white"}
                             secondBg={"black"}
+                            buttonNav={"/checkout"}
                         />
                     </div>
                 </div>
             ) : (
                 <div className="cart_empty">
-                    <h3 className="cart_empty_title">
-                        YOUR CART IS CURRENTLY EMPTY
-                    </h3>
+                    <div style={{ width: "100%", maxWidth: "500px" }}>
+                        <Lottie animationData={cartEmpty} loop={true} />
+                    </div>
                     <Button
                         text="RETURN  TO SHOP"
                         initialBg={"white"}
                         secondBg={"black"}
+                        buttonNav={"/shop"}
                     />
                 </div>
             )}

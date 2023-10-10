@@ -35,3 +35,9 @@ input{
 ::-webkit-scrollbar-thumb:hover{
     background-image: linear-gradient(rgb(42, 42, 128),rgb(45, 45, 143))
 }
+.error{
+    margin: 5rem auto;
+    padding: 2rem;
+    width:100%;
+    max-width: 600px;
+}

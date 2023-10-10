@@ -22,12 +22,13 @@ const SingleProduct = () => {
     const wishlistArr = useSelector((state: any) => state.allWishList.wishlist);
 
     function addWishlistItem(item: any): any {
-        if (wishlistArr.includes(item)) {
+         if (wishlistArr.includes(item)) {
             dispatch(removeWishlistItem(item.id));
         } else {
             dispatch(addToWishList(item));
         }
     }
+
     const wishColor = wishlistArr.map((item: any) => item.title).includes(title)
         ? "rgb(107, 12, 12)"
         : "#0d0d2b";
@@ -82,7 +83,7 @@ const SingleProduct = () => {
                                                 backgroundColor: wishColor,
                                             }}
                                             onClick={() =>
-                                                dispatch(addWishlistItem(item))
+                                             addWishlistItem(item)
                                             }
                                         >
                                             <BsHeart className="single_product_head_info_summary_fav" />
@@ -102,6 +103,7 @@ const SingleProduct = () => {
                                         initialBg={"white"}
                                         secondBg={"black"}
                                         text="BUY NOW"
+                                        buttonNav={"/checkout"}
                                     />
                                 </div>
                             </div>

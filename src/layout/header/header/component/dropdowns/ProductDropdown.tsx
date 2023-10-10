@@ -34,7 +34,7 @@ const ProductDropdown = () => {
                                 state={{ gender: "WOMAN" }}
                                 style={{ color: "white" }}
                             >
-                                WOMEN
+                                WOMAN
                             </Link>
                         </span>
                     </button>

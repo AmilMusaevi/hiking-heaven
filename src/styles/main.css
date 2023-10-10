@@ -1194,7 +1194,7 @@ input {
 }
 .cartPage .cart_item_details_input_icon {
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 0.9rem !important;
 }
 .cartPage .cart_empty {
   height: 100%;
