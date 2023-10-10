@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -15,24 +15,30 @@ type Props = {
     onClose: () => void;
     closeButton: boolean;
 };
+
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
     const { scrollToTop } = useScroll();
     const [state, setState] = useState();
     const { wishlistTotalQuantity } = useAppSelector(
         (state) => state.allWishList,
-    );
-
-    const navigate = useNavigate();
-    const open = isOpen ? "open" : "";
-
-    const wrapperRef = useRef<HTMLDivElement | null>(null);
-
+        );
+        
+        const navigate = useNavigate();
+        const open = isOpen ? "open" : "";
+        
+        const wrapperRef = useRef<HTMLDivElement | null>(null);
+        
     useOutsideClick(wrapperRef, onClose);
 
     function onChangeHandler(e: any) {
         setState(e.target.value);
     }
 
+        const location = useLocation();
+        
+          useEffect(() => {
+            onClose()
+          }, [location]);
     function onCatchEnter(e: any) {
         if (e.which !== 13) return;
 

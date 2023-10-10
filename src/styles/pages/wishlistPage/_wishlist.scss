@@ -32,24 +32,23 @@ width: max-content;
     &_info {
         display: flex;
         width: 100%;
-        gap: 6rem;
+        gap: 5rem;
         padding: 20px 30px;
         font-size: 1.1rem;
         border-bottom: 1px solid rgb(175, 175, 175);
         &_title {
             margin-left: 0.7rem;
+            &_price{
+                margin-right: 1rem;
+            }
         }
     }
     &_item {
         display: flex;
         height: min-content;
-        align-items: center;
+        align-items: center;    
         @include mq(md, max) {
             flex-direction: column;
-            .button {
-                width: 80%;
-                margin: 0 auto;
-            }
         }
         padding: 20px 0px;
         width: 100%;
@@ -88,5 +87,4 @@ width: max-content;
 }
 .emptyWish{
     margin: 0 auto;
-    background-color: transparent;
 }

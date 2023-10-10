@@ -16,7 +16,7 @@ const Wishlist = () => {
             {wishlists.length>0 &&
                 <div className="wishlist_info">
                     <h4 className="wishlist_info_title">Product</h4>
-                    <h4 className="wishlist_info_title">Unit Price</h4>
+                    <h4 className="wishlist_info_title_price">Unit Price</h4>
                 </div>
 }
                 {

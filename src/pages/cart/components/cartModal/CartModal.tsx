@@ -1,5 +1,6 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useRef } from "react";
+import { useRef,useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { useLocation } from "react-router-dom";
 import Lottie from "lottie-react";
 import emptyCartAnimation from "../../../../json/emptyCartanimation.json";
 
@@ -34,6 +35,11 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
     const openCart = isCartOpen ? "openCart" : "";
 
     const wrapperRef = useRef(null);
+    const locationn = useLocation();
+        
+          useEffect(() => {
+            onCloseCart()
+          }, [locationn]);
 
     useOutsideClick(wrapperRef, onCloseCart);
 

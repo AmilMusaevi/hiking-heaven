@@ -36,17 +36,18 @@ height: max-content;
 
         &_icons {
             position: absolute;
-            display: flex;
             flex-direction: column;
             gap: 0.3rem;
             top: 5%;
             color:var(--clr-primary);
             left: 6%;
             display: none;
-            // z-index: 99999;
             transition:
                 opacity 0.5s ease,
                 transform 2s cubic-bezier(0, 0, 0.44, 1.18);
+                @include mq(md,max){
+                    display: flex;
+                }
             &_item {
                 font-size:clamp(.6rem, 4vw,1.2rem);
                 width: 40px;
