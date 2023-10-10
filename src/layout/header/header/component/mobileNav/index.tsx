@@ -7,6 +7,8 @@ import { CiSearch } from "react-icons/ci";
 
 import { useAppSelector } from "../../../../../redux/store";
 import logo from "../../../../../assets/images/mainLogo.webp";
+import useScroll from "../../../../../hooks/useScroll";
+import useOutsideClick from "../../../../../hooks/useOutsideClick";
 
 type Props = {
     isOpen: boolean;
@@ -14,34 +16,18 @@ type Props = {
     closeButton: boolean;
 };
 const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
+    const { scrollToTop } = useScroll();
     const [state, setState] = useState();
     const { wishlistTotalQuantity } = useAppSelector(
         (state) => state.allWishList,
     );
 
-    const scrollUp = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
     const navigate = useNavigate();
     const open = isOpen ? "open" : "";
-    function useOutsideAlerter(ref: any) {
-        useEffect(() => {
-            function handleClickOutside(event: any) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    onClose();
-                }
-            }
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
+
     const wrapperRef = useRef<HTMLDivElement | null>(null);
-    useOutsideAlerter(wrapperRef);
+
+    useOutsideClick(wrapperRef, onClose);
 
     function onChangeHandler(e: any) {
         setState(e.target.value);
@@ -63,7 +49,7 @@ const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
                     <>
                         <div
                             className="mobile_nav_head_logo"
-                            onClick={scrollUp}
+                            onClick={scrollToTop}
                         >
                             <img src={logo} alt="logo" />
                         </div>
@@ -96,6 +82,9 @@ const MobileNav = ({ isOpen, onClose, closeButton }: Props) => {
                     </li>
                     <li className="mobile_nav_body_menu_item">
                         <Link to="/shop">Shop</Link>
+                    </li>
+                    <li className="mobile_nav_body_menu_item">
+                        <Link to="/contact">Contact</Link>
                     </li>
                 </ul>
 

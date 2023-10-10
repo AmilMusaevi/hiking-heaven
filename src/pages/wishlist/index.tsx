@@ -7,6 +7,7 @@ import { addToCart } from "../../redux/features/addToCart/cartSlice";
 const Wishlist = () => {
     const dispatch = useDispatch();
     const wishlists = useSelector((state: any) => state.allWishList.wishlist);
+
     return (
         <div className="wishlistPage">
             <div className="wishlist">
@@ -17,12 +18,6 @@ const Wishlist = () => {
                 {wishlists.map((item: any) => (
                     <div className="wishlist_item">
                         <div className="wishlist_item_about">
-                            <CiCircleRemove
-                                className="wishlist_item_remove"
-                                onClick={() =>
-                                    dispatch(removeWishlistItem(item.id))
-                                }
-                            />
                             <div className="wishlist_item_about_img">
                                 <img src={item.img} alt="img" />
                             </div>
@@ -34,6 +29,12 @@ const Wishlist = () => {
                             text="Add to Cart"
                             initialBg={"white"}
                             secondBg={"black"}
+                        />
+                        <CiCircleRemove
+                            className="wishlist_item_remove"
+                            onClick={() =>
+                                dispatch(removeWishlistItem(item.id))
+                            }
                         />
                     </div>
                 ))}

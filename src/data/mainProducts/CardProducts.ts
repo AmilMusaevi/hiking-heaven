@@ -31,7 +31,7 @@ import trekkingBagM from "./images/trekking-50-l-backpack-mt100-easy-fit-bordeau
 export const cardProducts = [
     {
         id: 1,
-        title: "WATERPROOF MOUNTAIN WALKING SHOES",
+        title: "WATERPROOF MOUNTAIN WALKING SHOES X SERIES",
         price: 399,
         quantity: 1,
         img: womenswaterproof,
@@ -54,7 +54,7 @@ export const cardProducts = [
     },
     {
         id: 4,
-        title: "WATERPROOF MOUNTAIN HIKING SHOES",
+        title: "WATERPROOF MOUNTAIN HIKING SHOES A SERIES",
         price: 149,
         quantity: 1,
         img: mountainHikingShoes,
@@ -62,7 +62,7 @@ export const cardProducts = [
     },
     {
         id: 5,
-        title: "WARM AND WATERPROOF HIKING SHOES",
+        title: "WARM AND COLD WATERPROOF HIKING SHOES",
         price: 399,
         quantity: 1,
         img: warmShoes,

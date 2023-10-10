@@ -76,7 +76,7 @@ const Footer = () => {
             <div className="hr"></div>
             <div className="footer_designed">
                 <p className="footer_designed_info">Designed by : </p>
-                <h3 className="footer_designed_surname">Musaevi</h3>
+                <h3 className="footer_designed_surname">Mr Musaevi</h3>
             </div>
         </footer>
     );

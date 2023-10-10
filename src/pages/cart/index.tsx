@@ -1,9 +1,10 @@
-import React from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { CiCircleRemove } from "react-icons/ci";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+
 import Button from "../../components/Button";
 
 import {
@@ -12,14 +13,16 @@ import {
     getCartTotal,
     increaseQuantity,
 } from "../../redux/features/addToCart/cartSlice";
-import { useDispatch } from "react-redux";
 const Cart = () => {
+    const dispatch = useDispatch();
     const carts = useSelector((state: any) => state.allCart.cart);
-    const notify = () => toast("Product removed!");
     const { totalQuantity, totalPrice } = useSelector(
         (state: any) => state.allCart,
     );
-    const dispatch = useDispatch();
+
+    const TotalAmountOfItem = (item: any) => item.price * item.quantity;
+
+    const notify = () => toast("Product removed!");
     function removeItem(id: number) {
         return () => {
             dispatch(removeItemFromCart(id));
@@ -35,6 +38,7 @@ const Cart = () => {
             });
         };
     }
+
     useEffect(() => {
         dispatch(getCartTotal());
     }, [carts]);
@@ -102,7 +106,7 @@ const Cart = () => {
                                         />
                                     </div>
                                     <div>
-                                        <p>99$</p>
+                                        <p>${TotalAmountOfItem(item)}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,4 @@
 import Button from "../../components/Button";
-import Header from "../../layout/header/header";
-import HeaderInfo from "../../layout/header/header/component/HeaderTop";
 import DealProducts from "./components/dealProducts/DealProducts";
 import OffersSection from "./components/offersSection/OffersSection";
 import ProductFilters from "./components/productFilters/ProductFilters";

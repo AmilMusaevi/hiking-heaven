@@ -15,17 +15,20 @@
 .wishlist {
     border-radius: 5px;
     margin: 5rem 0rem;
-    width: 100%;
+    width: 80%;
     background-color: white;
     height: min-content;
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content:space-between;
     @include mq(lg, max) {
         max-width: 90%;
     }
-
+a{
+width: max-content;
+}
     &_info {
         display: flex;
         width: 100%;
@@ -59,8 +62,9 @@
             border-bottom: none;
         }
         &_remove {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             cursor: pointer;
+            margin-top: 1rem;
         }
         &_about {
             display: flex;

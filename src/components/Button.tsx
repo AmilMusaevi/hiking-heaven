@@ -26,6 +26,7 @@ const Button: React.FC<Props> = ({
                     y: "10px",
                     color: initialBg,
                     backgroundColor: secondBg,
+                    borderColor: secondBg,
                 }}
                 whileHover={{
                     y: "0",

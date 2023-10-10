@@ -1,30 +1,18 @@
 import { useEffect, useState } from "react";
 import { LiaMountainSolid } from "react-icons/lia";
 
-const scrollUp = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-};
-const ScrollTop = () => {
-    const [scrollToUp, setScrollToUp] = useState(false);
+import useScroll from "../hooks/useScroll";
 
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 100) {
-                setScrollToUp(true);
-            } else {
-                setScrollToUp(false);
-            }
-        });
-    }, []);
+const ScrollTop = () => {
+    const { scrollToTop, scrollPos } = useScroll();
+    const isScrollUnder100 = scrollPos > 100;
+
     return (
         <>
-            {scrollToUp && (
+            {isScrollUnder100 && (
                 <div>
                     <LiaMountainSolid
-                        onClick={scrollUp}
+                        onClick={scrollToTop}
                         className="scrollTop_item"
                     />
                 </div>

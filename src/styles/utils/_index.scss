@@ -17,7 +17,9 @@
     align-items: center;
     gap: .5rem;
 }
+
 .slider{
-    overflow: hidden;
+    overflow-x: hidden;
     width: 100%;
+    padding: 1rem;
 }

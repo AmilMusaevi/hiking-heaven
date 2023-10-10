@@ -7,7 +7,8 @@ import Header from "./layout/header/header";
 import Footer from "./layout/footer";
 import HeaderInfo from "./layout/header/header/component/HeaderTop";
 import ScrollToTopPages from "./components/ScrollToTopPages";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
     return (
         <>

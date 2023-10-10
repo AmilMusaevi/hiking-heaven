@@ -33,9 +33,6 @@
         cursor: pointer;
       }
       &_title{
-        // * minimum .8
-        // * dynamic value  5vw --> ( 320px -> 16px ), (1386px -> ~ 60px)
-        // * maximum 1.4rem --> ~ 20px 
         font-size:clamp(.8rem,5vw, 1.4rem);
       }
       &_description{

@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import Lottie from "lottie-react";
+import emptyCartAnimation from "../../../../json/emptyCartanimation.json";
+
 import Button from "../../../../components/Button";
+
 import {
     removeItem,
     increaseQuantity,
@@ -12,6 +16,7 @@ import {
     AiOutlineMinusCircle,
     AiOutlineMinus,
 } from "react-icons/ai";
+import useOutsideClick from "../../../../hooks/useOutsideClick";
 
 type Props = {
     isCartOpen: boolean;
@@ -28,21 +33,10 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
 
     const openCart = isCartOpen ? "openCart" : "";
 
-    function useOutsideAlerter(ref: any) {
-        useEffect(() => {
-            function handleClickOutside(event: any) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    onCloseCart();
-                }
-            }
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
     const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef);
+
+    useOutsideClick(wrapperRef, onCloseCart);
+
     return (
         <div ref={wrapperRef} className={`cart_modal ${openCart}`}>
             <>
@@ -51,7 +45,7 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
                         <p>Your Basket ({totalQuantity})</p>
 
                         {closeCartButton ? (
-                            <AiOutlineMinus className="mobile_nav_head_close_button" />
+                            <AiOutlineMinus className="cart_modal_head_minus" />
                         ) : (
                             <AiOutlineClose
                                 className="cart_modal_head_remove"
@@ -59,51 +53,63 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
                             />
                         )}
                     </div>
-                    {carts.map((item: any) => (
-                        <div className="cart_modal_item">
-                            <div className="cart_modal_item_img">
-                                <img src={item.img} alt="cartImage" />
-                            </div>
-                            <div className="cart_modal_item_info">
-                                <p className="cart_modal_item_info_title">
-                                    {item.title}
-                                </p>
-                                <div className="cart_modal_item_info_quantity">
-                                    <AiOutlinePlusCircle
-                                        className="cart_modal_item_info_quantity_icon"
+                    {carts.length > 0 ? (
+                        carts.map((item: any) => (
+                            <div className="cart_modal_item" key={item.id}>
+                                <div className="cart_modal_item_img">
+                                    <img src={item.img} alt="cartImage" />
+                                </div>
+                                <div className="cart_modal_item_info">
+                                    <p className="cart_modal_item_info_title">
+                                        {item.title}
+                                    </p>
+                                    <div className="cart_modal_item_info_quantity">
+                                        <AiOutlinePlusCircle
+                                            className="cart_modal_item_info_quantity_icon"
+                                            onClick={() =>
+                                                dispatch(
+                                                    increaseQuantity(item.id),
+                                                )
+                                            }
+                                        />
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            max={100}
+                                            value={item.quantity}
+                                            className="cart_modal_item_info_quantity_input"
+                                        />
+                                        <AiOutlineMinusCircle
+                                            className="cart_modal_item_info_quantity_icon"
+                                            onClick={() =>
+                                                dispatch(
+                                                    decreaseQuantity(item.id),
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="cart_modal_item_details">
+                                    <AiOutlineClose
+                                        className="cart_modal_item_details_remove"
                                         onClick={() =>
-                                            dispatch(increaseQuantity(item.id))
+                                            dispatch(removeItem(item.id))
                                         }
                                     />
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        max={100}
-                                        value={item.quantity}
-                                        className="cart_modal_item_info_quantity_input"
-                                    />
-                                    <AiOutlineMinusCircle
-                                        className="cart_modal_item_info_quantity_icon"
-                                        onClick={() =>
-                                            dispatch(decreaseQuantity(item.id))
-                                        }
-                                    />
+                                    <p className="cart_modal_item_details_price">
+                                        ${item.price}
+                                    </p>
                                 </div>
                             </div>
-                            <div className="cart_modal_item_details">
-                                <AiOutlineClose
-                                    className="cart_modal_item_details_remove"
-                                    onClick={() =>
-                                        dispatch(removeItem(item.id))
-                                        
-                                    }
-                                />
-                                <p className="cart_modal_item_details_price">
-                                    ${item.price}
-                                </p>
-                            </div>
+                        ))
+                    ) : (
+                        <div style={{ width: "100%" }}>
+                            <Lottie
+                                animationData={emptyCartAnimation}
+                                loop={true}
+                            />
                         </div>
-                    ))}
+                    )}
                 </div>
                 <div className="cart_modal_bottom">
                     <div className="cart_modal_bottom_total">

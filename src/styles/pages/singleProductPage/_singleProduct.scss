@@ -1,0 +1,158 @@
+@use "../../abstracts/mixin" as *;
+
+.single_product {
+    margin-top: 5rem;
+    width: 100%;
+    height: max-content;
+    &_head {
+        @include mq (md,max){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        display: flex;
+        width: 100%;
+        padding-top: 1rem;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+        &_img {
+            width: 40%;
+            background-color: #eef2f5;
+            padding: 2rem;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include mq(md,max){
+                width: 100%;
+                padding: 1rem;
+            }
+            & img {
+                height: 400px;
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+        &_info {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            @include mq(md,max){
+                width: 100%;
+                margin-top: 2rem;
+                padding: 5px;
+            }
+            &_container{
+               display: flex;
+               justify-content: space-between;
+               @include mq(md,max){
+                justify-content: space-around;
+               }
+            }
+            &_top {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                margin-bottom: 2rem;
+                width:max-content;
+                &_title {
+                    width: 350px;
+                    font-size: clamp(1.2rem, 5vw,1.7rem);
+                    @include mq(md,max){
+                        width: auto;
+                    }
+                }
+                &_price{
+                    font-size: clamp(1rem,5vw,1.5rem);
+                    font-weight: 500;
+                   
+                }
+            }
+            &_details_delivery{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                &_item{
+                    display: flex;
+                    gap: .5rem;
+                    align-items: center;
+                    @include mq(md,max){
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    &_icon{
+                        font-size: clamp(1rem,5vw,1.5rem);
+                        &_container{
+                            display: flex;
+                            gap: .5rem;
+                        }
+                    }
+                    & h4 {
+                        font-size:  clamp(.7rem,5vw,1.1rem);;
+                    }
+                    & span {
+                        font-size:clamp(.5rem,5vw,1.1rem);;
+                    }
+                }
+            }
+            &_summary {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                &_fav {
+                    font-size: clamp(.8rem , 5vw, 1.1rem);
+                    font-weight: bold;
+                    cursor: pointer;
+                    color: white;
+                    &_container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                    }
+                }
+
+                &_quantity {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+                    &_icon {
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                    }
+                    &_input {
+                        padding: 0.7rem;
+                        text-align: center;
+                        background-color: #EFEFEF;
+                        border: none;
+                        &::-webkit-outer-spin-button,
+                        &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                        }
+                    }
+                }
+            }
+        }
+        &_buttons{
+            width: 100%;
+         & .button {
+            width: 50%;
+            margin-top: 1.5rem;
+         }
+        }
+    }
+    &_footer{
+        margin-top: 5rem;
+        width: 100%;
+        gap:1rem;
+       & h3{
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+        }
+    }
+}

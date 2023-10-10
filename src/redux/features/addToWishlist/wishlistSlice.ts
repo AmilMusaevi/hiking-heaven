@@ -1,6 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type TCart = {
+const wishItems =
+    localStorage.getItem("WishlistItems") !== null
+        ? JSON.parse(localStorage.getItem("WishlistItems")!)
+        : [];
+const wishQuantity =
+    localStorage.getItem("WishlistTotalQuantity") !== null
+        ? JSON.parse(localStorage.getItem("WishlistTotalQuantity")!)
+        : 0;
+
+type TWishlist = {
     id: number;
     price: number;
     quantity: number;
@@ -9,14 +18,23 @@ type TCart = {
 };
 
 type TInitialState = {
-    wishlist: TCart[];
+    wishlist: TWishlist[];
     wishlistTotalQuantity: number;
 };
 
 const initialState: TInitialState = {
-    wishlist: [],
-    wishlistTotalQuantity: 0,
+    wishlist: wishItems,
+    wishlistTotalQuantity: wishQuantity,
 };
+
+const funcSetItemsWish = (item: any, totalQuantity: number) => {
+    localStorage.setItem("WishlistItems", JSON.stringify(item));
+    localStorage.setItem(
+        "WishlistTotalQuantity",
+        JSON.stringify(totalQuantity),
+    );
+};
+
 export const wishlistSlice = createSlice({
     name: "wishlist",
     initialState,
@@ -44,6 +62,10 @@ export const wishlistSlice = createSlice({
                 },
             );
             state.wishlistTotalQuantity = wishlistTotalQuantity;
+            funcSetItemsWish(
+                state.wishlist.map((item) => item),
+                wishlistTotalQuantity,
+            );
         },
         removeWishlistItem: (state, action) => {
             state.wishlist = state.wishlist.filter(

@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const item = localStorage.getItem("CartItems");
+const items = item !== null ? JSON.parse(item) : [];
+const totalPriceRaw = localStorage.getItem("TotalPrice");
+const totalPrice = totalPriceRaw !== null ? JSON.parse(totalPriceRaw) : 0;
+const totalQuantityRaw = localStorage.getItem("TotalQuantity");
+const totalQuantity =
+    totalQuantityRaw !== null ? JSON.parse(totalQuantityRaw) : 0;
+
 type TCart = {
     id: number;
     price: number;
@@ -15,9 +23,15 @@ type TInitialState = {
 };
 
 const initialState: TInitialState = {
-    cart: [],
-    totalPrice: 0,
-    totalQuantity: 0,
+    cart: items,
+    totalPrice: totalPrice,
+    totalQuantity: totalQuantity,
+};
+
+const funcSetItems = (item: any, totalPrice: any, totalQuantity: any) => {
+    localStorage.setItem("CartItems", JSON.stringify(item));
+    localStorage.setItem("TotalPrice", JSON.stringify(totalPrice));
+    localStorage.setItem("TotalQuantity", JSON.stringify(totalQuantity));
 };
 
 export const cartSlice = createSlice({
@@ -38,9 +52,10 @@ export const cartSlice = createSlice({
             let { totalPrice, totalQuantity } = state.cart.reduce(
                 (cartTotal, cartItem) => {
                     const { price, quantity } = cartItem;
-                    const itemTotal = price * quantity;
-                    cartTotal.totalPrice += itemTotal;
+                    const totalAmountOfItem = price * quantity;
+                    cartTotal.totalPrice += totalAmountOfItem;
                     cartTotal.totalQuantity += quantity;
+
                     return cartTotal;
                 },
                 {
@@ -51,6 +66,11 @@ export const cartSlice = createSlice({
 
             state.totalPrice = parseInt(totalPrice.toFixed(2));
             state.totalQuantity = totalQuantity;
+            funcSetItems(
+                state.cart.map((item) => item),
+                totalPrice,
+                totalQuantity,
+            );
         },
         increaseQuantity: (state, action) => {
             state.cart = state.cart.map((item) => {

@@ -66,8 +66,7 @@
         }
 }
 @include mq(lg,max){
-    height: min-content;
-    // background-position: 0% 0%;
+    height: min-content;        
     padding: 40px 15px 50px;
 }
 }

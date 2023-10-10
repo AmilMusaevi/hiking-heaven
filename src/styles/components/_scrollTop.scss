@@ -1,3 +1,4 @@
+@use "../abstracts/mixin" as *;
 .scrollTop_item{
     position: fixed;
     right: 5px;
@@ -9,4 +10,7 @@
     width: max-content;    cursor: pointer;
     font-size: clamp(2rem, 5vw, 3rem);
     color:rgba(67, 62, 146, 0.877);
+    @include mq (lg,max){
+        display: none;
+    }
 }

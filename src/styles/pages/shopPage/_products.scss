@@ -77,29 +77,24 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1rem;
-    }
-    & .card{
-        width: 240px;
-        @include mq(md,max){
-            width: 160px;
-            height: 280px;  
-            padding: .6rem;
-        }
         &_img{
             width: 100%;
-            @include mq(md,max){
-                height: 150px;
-            }
+            min-height: 240px;
         }
         &_info{
             height: 80px;
         }
+        & .card_container{
+            width: 240px;
+        }
     }
+    
     &_option{
         min-width: 20%;
     }
+    }
 
-}
+
 .sort_details{
     position: absolute;
     cursor: pointer;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { data } from "../../../../data/productFilters/productFiltersData";
+
 const ProductFilters = () => {
     return (
         <section className="product_filters">

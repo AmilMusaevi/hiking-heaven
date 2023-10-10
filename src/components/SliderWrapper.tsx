@@ -13,7 +13,6 @@ const SliderWrapper: React.FC<Props> = ({ children }) => {
     return (
         <div className="slider">
             <Swiper
-    
                 breakpoints={{
                     320: { slidesPerView: 2, spaceBetween: 10 },
                     480: { slidesPerView: 2, spaceBetween: 20 },

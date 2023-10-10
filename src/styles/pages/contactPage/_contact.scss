@@ -1,0 +1,161 @@
+@use "../../abstracts/mixin" as *;
+
+.contact {
+    margin-top: 5rem;
+    width: 100%;
+    height: max-content;
+    @include mq(md,max){
+        margin-top: 5rem;
+    }
+    & .connection {
+        margin-top: 3rem;
+        width: 100%;
+        border-bottom: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        @include mq (md,max){
+            flex-direction: column;
+            margin-top: 1rem;
+            padding-bottom: 2rem;
+            padding: 1rem;
+        }
+        &_leftSide {
+            padding-bottom: 5rem;
+            display: flex;
+            padding-top: 5rem;
+            padding-left: 2rem;
+            width: 49%;
+            height: 100%;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 2rem;
+            padding-right: 3rem;
+            @include mq (md,max){
+                width: 100%;
+                padding: 0rem;
+            }
+            &_title {
+                font-size: clamp(1.7rem, 5vw, 3rem);
+            }
+            & h4 {
+                font-family: "Jost", sans-serif;
+                font-size: clamp(0.9rem, 5vw, 1.6rem);
+                color: #000a12;
+                font-weight: 500;
+                line-height: 2;
+            }
+            & p {
+                color: #666666;
+            }
+        }
+        &_formSide {
+            padding-left: 3rem;
+            border-left: 1px solid #000a12;
+            width: 49%;
+
+            @include mq (md,max){
+                width: 100%;
+                border-left: none;
+                padding-left: 0rem;
+            }
+            &_title {
+                font-size: clamp(1.5rem, 5vw, 3rem);
+            }
+            .form {
+                width:80%;
+                display: flex;
+                flex-direction: column;
+                margin-top: 1rem;
+                gap: 1rem;
+
+                @include mq(md,max){
+                    width: 100%;
+
+                }
+                & input {
+                    padding: 1rem;
+                    width: 100%;
+                    border: 1px solid rgb(197, 197, 197);
+                    &::placeholder{
+                        font-size: .9rem;
+                    }
+                }
+                & textarea {
+                    outline: none;
+                    border: 1px solid rgb(197, 197, 197);
+                    padding: 1rem;
+                    &::placeholder{
+                        font-size: .9rem;
+                    }
+                }
+            }
+            & .formSide_button {
+                width: 100%;
+                background-color: black;
+                color: white;
+                padding: 1rem;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+    & .store{
+        margin: 5rem 0rem;
+        padding-bottom: 2rem;
+
+        &_title{
+            text-align: center;
+            font-size: clamp(2rem,5vw,3rem);
+        }
+        &_cards{
+            margin-top: 1rem;
+            gap: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include mq (md,max){
+                width: 100%;
+                flex-wrap: wrap;
+                padding: 1rem;
+            }
+            // flex-wrap: wrap;/
+            &_item{
+                max-width: 420px;
+                width: 100%;
+                @include mq (md,max){
+                    max-width: 100%;
+                    // border-left: none;
+                }
+                &_img{
+                    margin-bottom: 1.2rem;
+                    width: 100%;
+                    & img{
+                        width: 100%;
+                        height: 56vh;
+                        filter: brightness(100%) contrast(100%) saturate(100%) blur(0px) hue-rotate(0deg);
+                    }
+                }
+                &_info{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1.2rem;
+                    &_city{
+                        font-size: .8rem;
+                        color: #E3ADB9;
+                        font-family: "Jost", sans-serif;
+                    }
+                    &_title{
+                        font-size: 1.8rem;
+                        color: #000a12;;
+                    }
+                    &_description{
+                        color: #747774
+                    }
+                }
+            }
+        }
+    }
+}

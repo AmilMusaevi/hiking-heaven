@@ -1,7 +1,7 @@
 @use "../abstracts//mixin" as *;
 .swiper {
     width: 100%;
-    height: min-content;
+    padding-bottom: 1rem;
     overflow:initial;
     overflow-x: clip !important;
   }
@@ -10,25 +10,35 @@
   }
   .swiper-slide {
     width: 200px;
+    height: max-content;
   }
   
-  .swiper-slide .card{
+  .swiper-slide .card_container{
     width: 100%;
-    
+    height: max-content;
   }
   
-  .swiper-slide .card .card_img{
-    height: 240px;
+  .swiper-slide .card_container .card_img{
+    height: 200px;
+    max-width: 200px;
+    @include mq(lg,max){
+      height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0rem;
+    }
     @include mq(md,max){
-        height: 160px;
+        height: 250px;
         padding: .2rem;
     }
+    @include mq(sm,max){
+      height: 150px;
+    }
   }
-  .swiper-slide .card .card_info h3{
+  .swiper-slide .card_container .card_info h3{
     font-size: .8rem;
   }
-    .swiper-slide .card{
-&_info{
-    padding-bottom: 1.5rem;
+  .swiper-slide .card_container .card_info {
+  padding-bottom: 1.3rem;
 }
-  }
