@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 
 import useScroll from "../hooks/useScroll";
-import ScrollUpAnimation from "../json/scrollUpAnimation.json";
+import ScrollUpAnimation from "../json/ScrollUpAnimation.json";
 
 const ScrollTop = () => {
     const { scrollToTop, scrollPos } = useScroll();

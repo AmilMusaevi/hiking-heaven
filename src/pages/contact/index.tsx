@@ -12,13 +12,19 @@ const Contact = () => {
     const [isLoading, { on, off }] = useBoolean();
     async function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        const {
+            VITE_EMAILJS_SERVICE_ID,
+            VITE_EMAILJS_TEMPLATE_ID,
+            VITE_EMAILJS_PUBLIC_KEY,
+        } = import.meta.env;
+
         on();
 
         await sendForm(
-            "default_service",
-            "template_xsx9mps",
+            VITE_EMAILJS_SERVICE_ID,
+            VITE_EMAILJS_TEMPLATE_ID,
             form.current,
-            "WvxlmmmlHwErCUUS6",
+            VITE_EMAILJS_PUBLIC_KEY,
         );
 
         off();

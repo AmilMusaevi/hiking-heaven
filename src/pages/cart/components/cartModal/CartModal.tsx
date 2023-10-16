@@ -18,6 +18,7 @@ import {
     AiOutlineMinusCircle,
     AiOutlineMinus,
 } from "react-icons/ai";
+import { useAppSelector } from "../../../../redux/store";
 
 type Props = {
     isCartOpen: boolean;
@@ -27,7 +28,7 @@ type Props = {
 
 const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
     const carts = useSelector((state: any) => state.allCart.cart);
-    const { totalPrice, totalQuantity } = useSelector(
+    const { totalPrice, totalQuantity } = useAppSelector(
         (state: any) => state.allCart,
     );
     const dispatch = useDispatch();
@@ -96,6 +97,7 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
                                             type="number"
                                             min={0}
                                             max={100}
+                                            readOnly
                                             value={item.quantity}
                                             className="cart_modal_item_info_quantity_input"
                                         />
