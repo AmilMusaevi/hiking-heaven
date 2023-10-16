@@ -1,24 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 
 import Dropdown from "../dropdown";
 
 import manProduct from "../../../../../assets/images/hiking-product-man.webp";
 import womanProduct from "../../../../../assets/images/hiking-product-woman.webp";
+import { setGender } from "../../../../../redux/features/pickupInputSlice/pickupInputSlice";
+
 const ProductDropdown = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const goTo = (g: string) => {
+        return () => {
+            dispatch(setGender(g));
+
+            navigate("/shop");
+        };
+    };
+
     return (
-        <Dropdown>
+        <Dropdown disabledPaths={["/shop"]}>
             <div className="product_dropDown">
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
                         <span>
-                            <Link
-                                to="/product"
-                                state={{ gender: "MAN" }}
+                            <span
+                                onClick={goTo("MAN")}
                                 style={{ color: "white" }}
                             >
                                 MAN
-                            </Link>
+                            </span>
                         </span>
                     </button>
                     <div className="product_dropDown_item_img">
@@ -29,13 +41,12 @@ const ProductDropdown = () => {
                 <div className="product_dropDown_item">
                     <button className="product_dropDown_item_button">
                         <span>
-                            <Link
-                                to="/product"
-                                state={{ gender: "WOMAN" }}
+                            <span
+                                onClick={goTo("WOMAN")}
                                 style={{ color: "white" }}
                             >
                                 WOMAN
-                            </Link>
+                            </span>
                         </span>
                     </button>
                     <div className="product_dropDown_item_img">
@@ -51,7 +62,9 @@ const ProductDropdown = () => {
                         <h3>OFF</h3>
                     </div>
                     <button className="product_dropDown_saleProduct_button">
-                        Shop Now
+                        <Link to={"/shop"} style={{ color: "white" }}>
+                            Shop Now
+                        </Link>
                     </button>
                 </div>
             </div>

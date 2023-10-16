@@ -1,6 +1,6 @@
-import { PiShoppingCartSimpleThin, PiMedalLight } from "react-icons/pi";
 import { GoGift } from "react-icons/go";
 import { motion } from "framer-motion";
+import { PiShoppingCartSimpleThin, PiMedalLight } from "react-icons/pi";
 
 const OffersSection = () => {
     return (

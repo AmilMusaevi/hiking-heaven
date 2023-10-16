@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { LiaMountainSolid } from "react-icons/lia";
+import Lottie from "lottie-react";
 
 import useScroll from "../hooks/useScroll";
+import ScrollUpAnimation from "../json/scrollUpAnimation.json";
 
 const ScrollTop = () => {
     const { scrollToTop, scrollPos } = useScroll();
     const isScrollUnder100 = scrollPos > 100;
-
     return (
         <>
             {isScrollUnder100 && (
                 <div>
-                    <LiaMountainSolid
+                    <Lottie
                         onClick={scrollToTop}
+                        animationData={ScrollUpAnimation}
                         className="scrollTop_item"
                     />
                 </div>

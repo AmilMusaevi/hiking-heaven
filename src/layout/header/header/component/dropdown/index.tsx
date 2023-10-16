@@ -1,7 +1,16 @@
 import React, { PropsWithChildren } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
-const Dropdown: React.FC<PropsWithChildren> = ({ children }) => {
+type Props = PropsWithChildren & {
+    disabledPaths: string[];
+};
+
+const Dropdown: React.FC<Props> = ({ children, disabledPaths }) => {
+    const { pathname } = useLocation();
+
+    if (disabledPaths && disabledPaths.includes(pathname)) return;
+
     return (
         <motion.div
             className="drop_down"

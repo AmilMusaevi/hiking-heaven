@@ -1,8 +1,9 @@
 import { PiArrowRightThin } from "react-icons/pi";
+import { AiOutlineTwitter } from "react-icons/ai";
 import { BsTelephoneForward } from "react-icons/bs";
 import { BiLogoFacebook, BiLogoInstagram } from "react-icons/bi";
-import { AiOutlineTwitter } from "react-icons/ai";
 import { FaCcPaypal, FaCcMastercard, FaCcVisa } from "react-icons/fa";
+
 const Footer = () => {
     return (
         <footer>
@@ -43,6 +44,7 @@ const Footer = () => {
                                 type="tel"
                                 className="footer_card_contact_bottom_input"
                                 defaultValue={"(888) 123 4567"}
+                                disabled
                             />
                         </div>
                     </div>

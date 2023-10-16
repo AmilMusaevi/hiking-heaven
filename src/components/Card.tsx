@@ -1,14 +1,15 @@
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { LuShoppingBag } from "react-icons/lu";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/features/addToCart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+
 import {
     addToWishList,
     removeWishlistItem,
 } from "../redux/features/addToWishlist/wishlistSlice";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { addToCart } from "../redux/features/addToCart/cartSlice";
+
 type Props = {
     img: string;
     title: string;
@@ -28,6 +29,16 @@ const Card: React.FC<Props> = ({ img, title, price, item }) => {
 
     function addCartItem() {
         dispatch(addToCart(item));
+        toast.success("Product successfully added", {
+            position: "top-left",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
     function addWishlistItem() {
         if (wishlistsArr.includes(item)) {

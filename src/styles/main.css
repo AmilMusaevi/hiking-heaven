@@ -47,6 +47,7 @@ a {
 
 input {
   outline: none;
+  font-size: 16px !important;
 }
 
 ::-webkit-scrollbar {
@@ -63,6 +64,13 @@ input {
 
 ::-webkit-scrollbar-thumb:hover {
   background-image: linear-gradient(rgb(42, 42, 128), rgb(45, 45, 143));
+}
+
+.error {
+  margin: 5rem auto;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
 }
 
 .drop_down {
@@ -179,15 +187,16 @@ input {
   height: max-content;
 }
 .card_container {
+  border: 1px solid rgba(230, 230, 230, 0.055);
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   position: relative;
   width: 300px;
   height: 360px;
-  background-color: rgba(128, 100, 100, 0.062);
   text-align: center;
   transition: 1s;
   padding: 1rem;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 .card_container:hover {
@@ -203,7 +212,6 @@ input {
 }
 .card_container_icons {
   position: absolute;
-  display: flex;
   flex-direction: column;
   gap: 0.3rem;
   top: 5%;
@@ -211,6 +219,11 @@ input {
   left: 6%;
   display: none;
   transition: opacity 0.5s ease, transform 2s cubic-bezier(0, 0, 0.44, 1.18);
+}
+@media screen and (max-width: 768px) {
+  .card_container_icons {
+    display: flex;
+  }
 }
 .card_container_icons_item {
   font-size: clamp(0.6rem, 4vw, 1.2rem);
@@ -484,22 +497,23 @@ input {
 }
 
 .scrollTop_item {
+  width: 120px;
   position: fixed;
-  right: 5px;
+  right: -32px;
   bottom: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.2rem;
+  transform: rotate(180deg);
   z-index: 1;
-  width: -moz-max-content;
-  width: max-content;
   cursor: pointer;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: rgba(67, 62, 146, 0.877);
 }
 @media screen and (max-width: 1024px) {
   .scrollTop_item {
-    display: none;
+    right: -20px;
+    width: 100px;
+    bottom: 0px;
   }
 }
 
@@ -638,10 +652,9 @@ input {
 .deal_products_item {
   width: 320px;
   cursor: pointer;
-  height: -moz-max-content;
-  height: max-content;
+  height: 420px;
   position: relative;
-  background-color: rgba(224, 215, 215, 0.315);
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   border-radius: 10px;
 }
 @media screen and (max-width: 1280px) {
@@ -703,8 +716,14 @@ input {
   cursor: pointer;
 }
 .deal_products_item_button_item {
-  font-size: clamp(2.3rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 2.7rem);
   color: rgb(63, 95, 126);
+}
+@media screen and (max-width: 768px) {
+  .deal_products_item_button {
+    opacity: 1;
+    right: 20px;
+  }
 }
 .deal_products_item:hover .deal_products_item_button {
   opacity: 1;
@@ -1087,7 +1106,7 @@ input {
   width: 100%;
   height: -moz-max-content;
   height: max-content;
-  min-height: 80%;
+  padding: 2rem 0rem;
   margin-top: 5rem;
   background-color: transparent;
   background-image: linear-gradient(226.69deg, rgba(229, 248, 255, 0.5490196078) 38.63%, rgba(249, 224, 176, 0.0784313725) 82.88%);
@@ -1197,16 +1216,30 @@ input {
   font-size: 0.9rem !important;
 }
 .cartPage .cart_empty {
-  height: 100%;
+  height: -moz-max-content;
+  height: max-content;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 2rem 0rem;
+  gap: 3rem;
+}
+@media screen and (max-width: 768px) {
+  .cartPage .cart_empty {
+    gap: 1rem;
+  }
 }
 .cartPage .cart_empty_title {
   font-size: clamp(1.2rem, 5vw, 3rem);
   margin-bottom: 1rem;
   font-family: fantasy;
+}
+.cartPage .cart_empty .button {
+  margin: 0 auto;
+  width: 40%;
+  text-align: center;
 }
 .cartPage .cart_wrapper {
   padding: 50px 0px;
@@ -1292,13 +1325,16 @@ input {
 .wishlist_info {
   display: flex;
   width: 100%;
-  gap: 6rem;
+  gap: 5rem;
   padding: 20px 30px;
   font-size: 1.1rem;
   border-bottom: 1px solid rgb(175, 175, 175);
 }
 .wishlist_info_title {
   margin-left: 0.7rem;
+}
+.wishlist_info_title_price {
+  margin-right: 1rem;
 }
 .wishlist_item {
   display: flex;
@@ -1316,10 +1352,6 @@ input {
 @media screen and (max-width: 768px) {
   .wishlist_item {
     flex-direction: column;
-  }
-  .wishlist_item .button {
-    width: 80%;
-    margin: 0 auto;
   }
 }
 .wishlist_item:last-child {
@@ -1347,6 +1379,10 @@ input {
 }
 .wishlist_item_about p {
   margin-right: 4rem;
+}
+
+.emptyWish {
+  margin: 0 auto;
 }
 
 .cart_modal {

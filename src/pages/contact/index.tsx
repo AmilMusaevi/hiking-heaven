@@ -1,7 +1,46 @@
+import { useRef } from "react";
+import { toast } from "react-toastify";
+import { sendForm } from "@emailjs/browser";
+
+import useBoolean from "../../hooks/useBoolean";
 import store1 from "../../assets/images/store-img-1.jpg";
 import store2 from "../../assets/images/store-img-2.jpg";
 import store3 from "../../assets/images/store-img-3.jpg";
+
 const Contact = () => {
+    const form = useRef<any>();
+    const [isLoading, { on, off }] = useBoolean();
+    async function submit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const {
+            VITE_EMAILJS_SERVICE_ID,
+            VITE_EMAILJS_TEMPLATE_ID,
+            VITE_EMAILJS_PUBLIC_KEY,
+        } = import.meta.env;
+
+        on();
+
+        await sendForm(
+            VITE_EMAILJS_SERVICE_ID,
+            VITE_EMAILJS_TEMPLATE_ID,
+            form.current,
+            VITE_EMAILJS_PUBLIC_KEY,
+        );
+
+        off();
+
+        toast.success("Email successfully sended", {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
     return (
         <div className="contact">
             <section className="connection">
@@ -40,19 +79,37 @@ const Contact = () => {
                     <h2 className="connection_formSide_title">
                         Send Your Request
                     </h2>
-                    <form typeof="submit" className="form">
+                    <form
+                        ref={form}
+                        id="contact"
+                        typeof="submit"
+                        className="form"
+                        onSubmit={submit}
+                    >
                         <div>
-                            <input type="text" placeholder="Name" required />
+                            <input
+                                type="text"
+                                name="from_name"
+                                placeholder="Name"
+                                required
+                            />
                         </div>
                         <div>
                             <input
                                 type="email"
+                                name="from_email"
                                 placeholder="Email Address"
                                 required
                             />
                         </div>
                         <div>
-                            <input type="tel" placeholder="Phone" required />
+                            <input
+                                name="from_phone"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-{[0-9]{2}}"
+                                type="number"
+                                placeholder="Phone"
+                                required
+                            />
                         </div>
                         <textarea
                             name="message"
@@ -62,7 +119,7 @@ const Contact = () => {
                             placeholder="Message"
                         />
                         <button type="submit" className="formSide_button">
-                            Send Message
+                            {!isLoading ? "Send Message" : "Message sending..."}
                         </button>
                     </form>
                 </div>

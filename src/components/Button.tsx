@@ -1,6 +1,5 @@
-import { addPointerEvent, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Product from "../pages/products";
 
 type Props = {
     text: string;

@@ -22,7 +22,9 @@
         display: flex;
         align-items: center;
         gap: 0.9rem;
-
+           & a{
+            width: 150px;
+           }
         & > div:not(:last-child) {
             border-right-width: 2px;
             border-right-style: solid;
@@ -79,7 +81,7 @@
         position: relative;
         &_item {
             width: 100px;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-family: "Work Sans", serif;
             cursor: pointer;
             width: max-content;
@@ -117,7 +119,7 @@
         cursor: pointer;
         &_item {
             font-weight: 300;
-            z-index: 2;
+            z-index: 5;
         }
 
         &_fav,

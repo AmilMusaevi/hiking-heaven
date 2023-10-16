@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
-import { BiSearch, BiUser } from "react-icons/bi";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { LuShoppingBag } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/images/mainLogo.webp";
+import { BiSearch, BiUser } from "react-icons/bi";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+
 import NavLink from "./component/NavLink";
-import Shop from "./component/dropdowns/ProductDropdown";
 import MobileNav from "./component/mobileNav";
-import Input from "../../../components/SearchInput";
-import { getCartTotal } from "../../../redux/features/addToCart/cartSlice";
-import { useDispatch } from "react-redux";
-import { getWishlistTotal } from "../../../redux/features/addToWishlist/wishlistSlice";
-import CartModal from "../../../pages/cart/components/cartModal/CartModal";
-import { useAppSelector } from "../../../redux/store";
 import useScroll from "../../../hooks/useScroll";
-import useOpenModals from "../../../hooks/useOpenModals";
 import useBoolean from "../../../hooks/useBoolean";
+import Input from "../../../components/SearchInput";
+import { useAppSelector } from "../../../redux/store";
+import Logo from "../../../assets/images/mainLogo.webp";
+import useOpenModals from "../../../hooks/useOpenModals";
+import Shop from "./component/dropdowns/ProductDropdown";
+import { getCartTotal } from "../../../redux/features/addToCart/cartSlice";
+import CartModal from "../../../pages/cart/components/cartModal/CartModal";
+import { getWishlistTotal } from "../../../redux/features/addToWishlist/wishlistSlice";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -58,8 +59,10 @@ const Header = () => {
             <div className="header_burger">
                 <RxHamburgerMenu onClick={onClickHandler} />
             </div>
-            <div className="header_logo" onClick={scrollToTop}>
-                <img src={Logo} alt="PageLogo" />
+            <div className="header_logo">
+                <Link to={"/"}>
+                    <img src={Logo} alt="PageLogo" onClick={scrollToTop} />
+                </Link>
             </div>
             <nav className="header_nav">
                 <ul className="header_nav_menu">
@@ -73,9 +76,11 @@ const Header = () => {
                     {input && <Input />}
                     <BiSearch className="header_icon_item" onClick={toggle} />
                 </div>
-                <div>
-                    <BiUser className="header_icon_item" />
-                </div>
+                <Link to={"/signIn"} style={{ zIndex: "10" }}>
+                    <div>
+                        <BiUser className="header_icon_item" />
+                    </div>
+                </Link>
                 <div className="header_icon_fav hideMobile">
                     <Link to="wishlist">
                         <MdOutlineFavoriteBorder className="header_icon_item" />

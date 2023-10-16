@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { LiaQuestionCircle } from "react-icons/lia";
 import { AiOutlineShop } from "react-icons/ai";
+import { LiaQuestionCircle } from "react-icons/lia";
 import { TiLocationOutline } from "react-icons/ti";
 const HeaderInfo = () => {
     return (
@@ -12,19 +13,27 @@ const HeaderInfo = () => {
                 </p>
             </div>
             <div className="header_top_right">
-                <div className="header_top_right">
-                    <LiaQuestionCircle className="header_top_right_icon" />
-                    <p className="header_top_right_text">Help & contact</p>
-                </div>
+                <Link to={"/contact"}>
+                    <div className="header_top_right">
+                        <LiaQuestionCircle className="header_top_right_icon" />
+                        <p className="header_top_right_text">Help & contact</p>
+                    </div>
+                </Link>
 
-                <div className="header_top_right">
-                    <AiOutlineShop className="header_top_right_icon" />
-                    <p className="header_top_right_text">Deals of the day</p>
-                </div>
-                <div className="header_top_right">
-                    <TiLocationOutline className="header_top_right_icon" />
-                    <p className="header_top_right_text">Store location</p>
-                </div>
+                <Link to={"/shop"}>
+                    <div className="header_top_right">
+                        <AiOutlineShop className="header_top_right_icon" />
+                        <p className="header_top_right_text">
+                            Deals of the day
+                        </p>
+                    </div>
+                </Link>
+                <Link to={"/contact"}>
+                    <div className="header_top_right">
+                        <TiLocationOutline className="header_top_right_icon" />
+                        <p className="header_top_right_text">Store location</p>
+                    </div>
+                </Link>
             </div>
         </div>
     );

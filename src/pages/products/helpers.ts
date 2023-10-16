@@ -53,9 +53,10 @@ export const SelectHandler = ({
 };
 
 export const HandleFilter =
-    ({ option, setOption, setFilteredData }: Record<string, any>) =>
+    ({ option, setOption, setFilteredData, resetInput }: Record<string, any>) =>
     (filter: string) => {
         return () => {
+            resetInput();
             setOption(filter);
             switch (filter) {
                 case "all":

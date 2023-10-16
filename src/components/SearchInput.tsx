@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { addToInputValue } from "../redux/features/pickupInputSlice/pickupInputSlice";
+
 const SearchInput = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [state, setState] = useState("");
-    const onChangeHandler = (e: any) => setState(e.target.value);
 
+    const onChangeHandler = (e: any) => setState(e.target.value);
     function onCatchEnter(e: any) {
         if (e.which !== 13) return;
 
-        navigate("/shop", {
-            state: {
-                filter: state,
-            },
-        });
+        dispatch(addToInputValue(state));
+
+        if (state.length > 0) navigate("/shop");
     }
+
     return (
         <div className="searchBarInput">
             <motion.input

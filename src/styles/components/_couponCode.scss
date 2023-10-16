@@ -1,0 +1,32 @@
+.couponCode {
+    width: 100%;
+    height: 100px;
+    &_desc {
+        width: 250px;
+    }
+    & input {
+        padding: .5rem;
+        margin: 1rem auto;
+        background-color: black;
+        color: white;
+        border: none;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+            transition: .5s;
+        &:focus {
+            background-color: gray;
+            transition: .5s;
+        }
+    }
+    &_totalPrice{
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        sup {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+}

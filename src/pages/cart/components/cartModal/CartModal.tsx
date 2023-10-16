@@ -1,11 +1,12 @@
-import { useRef,useEffect } from "react";
-import { useSelector, useDispatch} from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import Lottie from "lottie-react";
-import emptyCartAnimation from "../../../../json/emptyCartanimation.json";
+import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Button from "../../../../components/Button";
-
+import useOutsideClick from "../../../../hooks/useOutsideClick";
+import emptyCartAnimation from "../../../../json/emptyCartanimation.json";
 import {
     removeItem,
     increaseQuantity,
@@ -17,7 +18,6 @@ import {
     AiOutlineMinusCircle,
     AiOutlineMinus,
 } from "react-icons/ai";
-import useOutsideClick from "../../../../hooks/useOutsideClick";
 
 type Props = {
     isCartOpen: boolean;
@@ -36,13 +36,27 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
 
     const wrapperRef = useRef(null);
     const locationn = useLocation();
-        
-          useEffect(() => {
-            onCloseCart()
-          }, [locationn]);
+    useEffect(() => {
+        onCloseCart();
+    }, [locationn]);
 
     useOutsideClick(wrapperRef, onCloseCart);
 
+    function removeProductItem(item: any) {
+        return () => {
+            dispatch(removeItem(item));
+            toast.error("Product removed!", {
+                position: "top-left",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        };
+    }
     return (
         <div ref={wrapperRef} className={`cart_modal ${openCart}`}>
             <>
@@ -98,9 +112,7 @@ const CartModal = ({ isCartOpen, onCloseCart, closeCartButton }: Props) => {
                                 <div className="cart_modal_item_details">
                                     <AiOutlineClose
                                         className="cart_modal_item_details_remove"
-                                        onClick={() =>
-                                            dispatch(removeItem(item.id))
-                                        }
+                                        onClick={removeProductItem(item.id)}
                                     />
                                     <p className="cart_modal_item_details_price">
                                         ${item.price}

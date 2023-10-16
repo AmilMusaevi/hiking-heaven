@@ -10,7 +10,8 @@ import SingleProduct from "../pages/singleProduct";
 import ScrollTop from "../components/ScrollTop";
 import Contact from "../pages/contact";
 import Error from "../pages/error";
-import Checkout from "..//pages/checkout"
+import Checkout from "..//pages/checkout";
+import SignIn from "../pages/signIn";
 
 const AppRouter = () => {
     return (
@@ -22,8 +23,9 @@ const AppRouter = () => {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<Error />}/>
-                <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="*" element={<Error />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/signIn" element={<SignIn />} />
             </Routes>
             <ScrollTop />
         </>

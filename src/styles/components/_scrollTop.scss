@@ -1,16 +1,21 @@
 @use "../abstracts/mixin" as *;
 .scrollTop_item{
+    width: 120px;
     position: fixed;
-    right: 5px;
+    right: -32px;
     bottom: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: .2rem;
+    transform: rotate(180deg);
     z-index: 1;
-    width: max-content;    cursor: pointer;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color:rgba(67, 62, 146, 0.877);
+    // display: none;
+   cursor: pointer;
+
     @include mq (lg,max){
-        display: none;
+        right: -20px;
+        width: 100px;
+        bottom:0px ;
     }
 }

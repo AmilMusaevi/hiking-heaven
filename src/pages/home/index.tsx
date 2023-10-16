@@ -1,11 +1,12 @@
+import Coupon from "../../components/Coupon";
 import Button from "../../components/Button";
 import DealProducts from "./components/dealProducts/DealProducts";
+import NatureSection from "./components/natureSection/NatureSection";
 import OffersSection from "./components/offersSection/OffersSection";
 import ProductFilters from "./components/productFilters/ProductFilters";
 import DiscountedProduct from "./components/discountedProduct/DiscountedProduct";
-import Coupon from "../../components/Coupon";
 import BestSellingProducts from "./components/bestSellingProducts/BestSellingProducts";
-import NatureSection from "./components/natureSection/NatureSection";
+
 const Home = () => {
     return (
         <>

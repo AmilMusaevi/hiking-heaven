@@ -1,23 +1,9 @@
 
 @use "./constants" as *;
-// * $breakpoint -> sm, md, lg, xl
-// * $type -> default min, max
+
 @mixin mq($breakpoint, $type : min) {
-  // * create $size variable to get breakpoints size from breakpoints map which imported from constants
     $size: map-get($breakpoints, $breakpoint);
     @media screen and (#{$type}-width: $size) {
       @content; 
     }
 }
-/* 
-.card {
-  @include mq(sm) {
-    display:  none;
-  }
-}
-
-@media screen and (min-width: 480px) {
-  .card {
-    display:  none;
-  }
-} */

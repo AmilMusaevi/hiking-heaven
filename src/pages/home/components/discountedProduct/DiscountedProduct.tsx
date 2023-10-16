@@ -1,9 +1,8 @@
 import React from "react";
-import { cardProducts } from "../../../../data/mainProducts/CardProducts";
 
 import Card from "../../../../components/Card";
-
 import img from "../../../../assets/images/Group-752.webp";
+import { cardProducts } from "../../../../data/mainProducts/CardProducts";
 
 const DiscountedProduct = () => {
     return (

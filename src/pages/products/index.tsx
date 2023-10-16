@@ -1,26 +1,45 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { MdSort } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 import Card from "../../components/Card";
 import { HandleFilter, SelectHandler } from "./helpers";
-import { isObject, hasObjectProperty } from "../../utils";
 import { shuffledData } from "../../data/mainProducts/CardProducts";
+import { resetInput } from "../../redux/features/pickupInputSlice/pickupInputSlice";
 
-import { MdSort } from "react-icons/md";
 const Shop = () => {
-    const { state } = useLocation();
     const [sort, setSort] = useState(false);
     const [option, setOption] = useState("");
-    // prettier-ignore
-    const [filteredData, setFilteredData] = useState<any[]>(
-        !isObject(state)
-            ? shuffledData
-            : hasObjectProperty(state, "gender")
-                ? shuffledData.filter(q => q.gender === state.gender)
-                : hasObjectProperty(state, "filter")
-                    ? shuffledData.filter(q => q.title.toLowerCase().includes(state.filter.toLowerCase()))
-                    : shuffledData
+    const { inputValue, gender } = useSelector(
+        (state: any) => state.allInputValue,
     );
+
+    const filteredGenderData =
+        gender !== "ALL"
+            ? shuffledData.filter((q) => q.gender === gender)
+            : shuffledData;
+    const filteredInputData =
+        inputValue.length > 0
+            ? filteredGenderData.filter((q) =>
+                  q.title.toLowerCase().includes(inputValue.toLowerCase()),
+              )
+            : filteredGenderData;
+
+    console.log(filteredGenderData, gender);
+
+    const [filteredData, setFilteredData] = useState<any[]>(filteredInputData);
+
+    console.log(filteredData, gender, "datt");
+
+    useEffect(() => {
+        inputValue.length > 0
+            ? setFilteredData(
+                  filteredGenderData.filter((q) =>
+                      q.title.toLowerCase().includes(inputValue.toLowerCase()),
+                  ),
+              )
+            : filteredGenderData;
+    }, [inputValue]);
 
     const onSelectHandler = SelectHandler({
         option,
@@ -31,6 +50,7 @@ const Shop = () => {
         option,
         setOption,
         setFilteredData,
+        resetInput,
     });
 
     function onClickSort() {

@@ -1,19 +1,18 @@
+import { toast } from "react-toastify";
+import { BsHeart } from "react-icons/bs";
 import { useParams } from "react-router-dom";
+import { LuShoppingCart } from "react-icons/lu";
+import { TbTruckDelivery } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 
+import Button from "../../components/Button";
+import Slider from "../../components/Slider";
+import { shuffledData } from "../../data/mainProducts/CardProducts";
 import { addToCart } from "../../redux/features/addToCart/cartSlice";
 import {
     addToWishList,
     removeWishlistItem,
 } from "../../redux/features/addToWishlist/wishlistSlice";
-
-import { shuffledData } from "../../data/mainProducts/CardProducts";
-import Button from "../../components/Button";
-import Slider from "../../components/Slider";
-
-import { BsHeart } from "react-icons/bs";
-import { TbTruckDelivery } from "react-icons/tb";
-import { LuShoppingCart } from "react-icons/lu";
 
 const SingleProduct = () => {
     const { title } = useParams();
@@ -22,11 +21,26 @@ const SingleProduct = () => {
     const wishlistArr = useSelector((state: any) => state.allWishList.wishlist);
 
     function addWishlistItem(item: any): any {
-         if (wishlistArr.includes(item)) {
+        if (wishlistArr.includes(item)) {
             dispatch(removeWishlistItem(item.id));
         } else {
             dispatch(addToWishList(item));
         }
+    }
+    function addItem(item: any) {
+        return () => {
+            dispatch(addToCart(item));
+            toast.success("Product successfully added", {
+                position: "top-left",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        };
     }
 
     const wishColor = wishlistArr.map((item: any) => item.title).includes(title)
@@ -83,7 +97,7 @@ const SingleProduct = () => {
                                                 backgroundColor: wishColor,
                                             }}
                                             onClick={() =>
-                                             addWishlistItem(item)
+                                                addWishlistItem(item)
                                             }
                                         >
                                             <BsHeart className="single_product_head_info_summary_fav" />
@@ -95,9 +109,7 @@ const SingleProduct = () => {
                                         initialBg={"black"}
                                         secondBg={"#EFEFEF"}
                                         text="ADD TO CART"
-                                        addToCart={() =>
-                                            dispatch(addToCart(item))
-                                        }
+                                        addToCart={addItem(item)}
                                     />
                                     <Button
                                         initialBg={"white"}

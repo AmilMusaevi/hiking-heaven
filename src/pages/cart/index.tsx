@@ -1,19 +1,20 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { CiCircleRemove } from "react-icons/ci";
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import { toast } from "react-toastify";
 import Lottie from "lottie-react";
+import { toast } from "react-toastify";
+import { CiCircleRemove } from "react-icons/ci";
+import { useDispatch, useSelector } from "react-redux";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 import Button from "../../components/Button";
 import cartEmpty from "../../json/emptyCart.json";
+import CouponCode from "../../components/CouponCode";
 import {
     removeItem as removeItemFromCart,
     decreaseQuantity,
     getCartTotal,
     increaseQuantity,
 } from "../../redux/features/addToCart/cartSlice";
+
 const Cart = () => {
     const dispatch = useDispatch();
     const carts = useSelector((state: any) => state.allCart.cart);
@@ -23,12 +24,11 @@ const Cart = () => {
 
     const TotalAmountOfItem = (item: any) => item.price * item.quantity;
 
-    const notify = () => toast("Product removed!");
     function removeItem(id: number) {
         return () => {
             dispatch(removeItemFromCart(id));
-            toast.error("Item removed", {
-                position: "top-center",
+            toast.error("Product removed!", {
+                position: "top-left",
                 autoClose: 4000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -124,8 +124,7 @@ const Cart = () => {
                             <p>{totalQuantity}</p>
                         </div>
                         <div className="cart_checkout_total">
-                            <p>Total Price</p>
-                            <p>${totalPrice}</p>
+                            <CouponCode totalPrice={totalPrice} />
                         </div>
                         <Button
                             text={"PROCEED TO CHECKOUT"}
